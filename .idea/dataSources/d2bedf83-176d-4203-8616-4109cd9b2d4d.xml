@@ -1,0 +1,1974 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="db [2]">
+  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.15">
+    <root id="1">
+      <ServerVersion>3.25.1</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="main">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <collation id="3" parent="1" name="BINARY"/>
+    <collation id="4" parent="1" name="NOCASE"/>
+    <collation id="5" parent="1" name="RTRIM"/>
+    <table id="6" parent="2" name="Incplantdetail"/>
+    <table id="7" parent="2" name="MangerUser"/>
+    <table id="8" parent="2" name="alterenvironment"/>
+    <table id="9" parent="2" name="app_changelog"/>
+    <table id="10" parent="2" name="app_viewparam"/>
+    <table id="11" parent="2" name="auth_group"/>
+    <table id="12" parent="2" name="auth_group_permissions"/>
+    <table id="13" parent="2" name="auth_permission"/>
+    <table id="14" parent="2" name="auth_user"/>
+    <table id="15" parent="2" name="auth_user_groups"/>
+    <table id="16" parent="2" name="auth_user_user_permissions"/>
+    <table id="17" parent="2" name="buypost"/>
+    <table id="18" parent="2" name="cart"/>
+    <table id="19" parent="2" name="commentpost"/>
+    <table id="20" parent="2" name="customenvironment"/>
+    <table id="21" parent="2" name="customstatistics"/>
+    <table id="22" parent="2" name="django_admin_log"/>
+    <table id="23" parent="2" name="django_content_type"/>
+    <table id="24" parent="2" name="django_migrations"/>
+    <table id="25" parent="2" name="django_session"/>
+    <table id="26" parent="2" name="fixinfo"/>
+    <table id="27" parent="2" name="incubator"/>
+    <table id="28" parent="2" name="incubatorhardinf"/>
+    <table id="29" parent="2" name="incubatorusing"/>
+    <table id="30" parent="2" name="monitorinform"/>
+    <table id="31" parent="2" name="order"/>
+    <table id="32" parent="2" name="orderitem"/>
+    <table id="33" parent="2" name="plant"/>
+    <table id="34" parent="2" name="plantshow"/>
+    <table id="35" parent="2" name="plantstatistics"/>
+    <table id="36" parent="2" name="product"/>
+    <table id="37" parent="2" name="productdetail"/>
+    <table id="38" parent="2" name="repository"/>
+    <table id="39" parent="2" name="selldetail"/>
+    <table id="40" parent="2" name="sellmanager"/>
+    <table id="41" parent="2" name="sellpost"/>
+    <table id="42" parent="2" name="sqlite_master">
+      <System>1</System>
+    </table>
+    <table id="43" parent="2" name="sqlite_sequence">
+      <System>1</System>
+    </table>
+    <table id="44" parent="2" name="user"/>
+    <table id="45" parent="2" name="usershowlink"/>
+    <column id="46" parent="6" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="47" parent="6" name="dayAvertemp">
+      <Position>2</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <column id="48" parent="6" name="dayAverhum">
+      <Position>3</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <column id="49" parent="6" name="dayAverpress">
+      <Position>4</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <column id="50" parent="6" name="dayAverlight">
+      <Position>5</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <column id="51" parent="6" name="plant_plantname">
+      <Position>6</Position>
+      <DataType>varchar(50)|0s</DataType>
+    </column>
+    <column id="52" parent="6" name="Incubator_IncuNo">
+      <Position>7</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <column id="53" parent="6" name="incplantdetailDate">
+      <Position>8</Position>
+      <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="54" parent="6" name="Incplantdetail_plant_plantname_e365ba27">
+      <ColNames>plant_plantname</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="55" parent="6" name="Incplantdetail_Incubator_IncuNo_f1f98a0b">
+      <ColNames>Incubator_IncuNo</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="56" parent="6">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="57" parent="6">
+      <ColNames>plant_plantname</ColNames>
+      <RefTableName>plant</RefTableName>
+      <RefColNames>plantName</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="58" parent="6">
+      <ColNames>Incubator_IncuNo</ColNames>
+      <RefTableName>incubator</RefTableName>
+      <RefColNames>IncuNo</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="59" parent="7" name="MuserId">
+      <Position>1</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="60" parent="7" name="MuserName">
+      <Position>2</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="61" parent="7" name="MuserPhoneNum">
+      <Position>3</Position>
+      <DataType>varchar(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="62" parent="7" name="Mpassword">
+      <Position>4</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="63" parent="7" name="sqlite_autoindex_MangerUser_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>MuserId</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="64" parent="7" name="sqlite_autoindex_MangerUser_2">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>MuserName</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="65" parent="7" name="sqlite_autoindex_MangerUser_3">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>MuserPhoneNum</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="66" parent="7">
+      <ColNames>MuserId</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_MangerUser_1</UnderlyingIndexName>
+    </key>
+    <key id="67" parent="7">
+      <ColNames>MuserName</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_MangerUser_2</UnderlyingIndexName>
+    </key>
+    <key id="68" parent="7">
+      <ColNames>MuserPhoneNum</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_MangerUser_3</UnderlyingIndexName>
+    </key>
+    <column id="69" parent="8" name="AltEid">
+      <Position>1</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="70" parent="8" name="ATime">
+      <Position>2</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="71" parent="8" name="ATemperature">
+      <Position>3</Position>
+      <DataType>real|0s</DataType>
+    </column>
+    <column id="72" parent="8" name="AHumidity">
+      <Position>4</Position>
+      <DataType>real|0s</DataType>
+    </column>
+    <column id="73" parent="8" name="ALightlntensity">
+      <Position>5</Position>
+      <DataType>real|0s</DataType>
+    </column>
+    <column id="74" parent="8" name="APressure">
+      <Position>6</Position>
+      <DataType>real|0s</DataType>
+    </column>
+    <column id="75" parent="8" name="APlantStage">
+      <Position>7</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <column id="76" parent="8" name="IncubatorUsing_IUNo">
+      <Position>8</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <index id="77" parent="8" name="sqlite_autoindex_alterenvironment_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>AltEid</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="78" parent="8" name="alterenvironment_IncubatorUsing_IUNo_5ec9db7d">
+      <ColNames>IncubatorUsing_IUNo</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="79" parent="8">
+      <ColNames>AltEid</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_alterenvironment_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="80" parent="8">
+      <ColNames>IncubatorUsing_IUNo</ColNames>
+      <RefTableName>incubatorusing</RefTableName>
+      <RefColNames>IUNo</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="81" parent="9" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="82" parent="9" name="tem">
+      <Position>2</Position>
+      <DataType>varchar(5)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="83" parent="9" name="pre">
+      <Position>3</Position>
+      <DataType>varchar(6)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="84" parent="9" name="hum">
+      <Position>4</Position>
+      <DataType>varchar(5)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="85" parent="9" name="led">
+      <Position>5</Position>
+      <DataType>varchar(5)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="86" parent="9" name="addtime">
+      <Position>6</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="87" parent="9">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="88" parent="10" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="89" parent="10" name="tem">
+      <Position>2</Position>
+      <DataType>varchar(5)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="90" parent="10" name="pre">
+      <Position>3</Position>
+      <DataType>varchar(6)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="91" parent="10" name="hum">
+      <Position>4</Position>
+      <DataType>varchar(5)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="92" parent="10" name="led">
+      <Position>5</Position>
+      <DataType>varchar(5)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="93" parent="10" name="addtime">
+      <Position>6</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="94" parent="10">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="95" parent="11" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="96" parent="11" name="name">
+      <Position>2</Position>
+      <DataType>varchar(150)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="97" parent="11" name="sqlite_autoindex_auth_group_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>name</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="98" parent="11">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="99" parent="11">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_auth_group_1</UnderlyingIndexName>
+    </key>
+    <column id="100" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="101" parent="12" name="group_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="102" parent="12" name="permission_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="103" parent="12" name="auth_group_permissions_group_id_permission_id_0cd325b0_uniq">
+      <ColNames>group_id
+permission_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="104" parent="12" name="auth_group_permissions_group_id_b120cbf9">
+      <ColNames>group_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="105" parent="12" name="auth_group_permissions_permission_id_84c5c92e">
+      <ColNames>permission_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="106" parent="12">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="107" parent="12">
+      <ColNames>group_id</ColNames>
+      <RefTableName>auth_group</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="108" parent="12">
+      <ColNames>permission_id</ColNames>
+      <RefTableName>auth_permission</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="109" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="110" parent="13" name="content_type_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="111" parent="13" name="codename">
+      <Position>3</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="112" parent="13" name="name">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="113" parent="13" name="auth_permission_content_type_id_codename_01ab375a_uniq">
+      <ColNames>content_type_id
+codename</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="114" parent="13" name="auth_permission_content_type_id_2f476e4b">
+      <ColNames>content_type_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="115" parent="13">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="116" parent="13">
+      <ColNames>content_type_id</ColNames>
+      <RefTableName>django_content_type</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="117" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="118" parent="14" name="password">
+      <Position>2</Position>
+      <DataType>varchar(128)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="119" parent="14" name="last_login">
+      <Position>3</Position>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <column id="120" parent="14" name="is_superuser">
+      <Position>4</Position>
+      <DataType>bool|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="121" parent="14" name="username">
+      <Position>5</Position>
+      <DataType>varchar(150)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="122" parent="14" name="first_name">
+      <Position>6</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="123" parent="14" name="email">
+      <Position>7</Position>
+      <DataType>varchar(254)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="124" parent="14" name="is_staff">
+      <Position>8</Position>
+      <DataType>bool|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="125" parent="14" name="is_active">
+      <Position>9</Position>
+      <DataType>bool|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="126" parent="14" name="date_joined">
+      <Position>10</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="127" parent="14" name="last_name">
+      <Position>11</Position>
+      <DataType>varchar(150)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="128" parent="14" name="sqlite_autoindex_auth_user_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>username</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="129" parent="14">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="130" parent="14">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_auth_user_1</UnderlyingIndexName>
+    </key>
+    <column id="131" parent="15" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="132" parent="15" name="user_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="133" parent="15" name="group_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="134" parent="15" name="auth_user_groups_user_id_group_id_94350c0c_uniq">
+      <ColNames>user_id
+group_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="135" parent="15" name="auth_user_groups_user_id_6a12ed8b">
+      <ColNames>user_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="136" parent="15" name="auth_user_groups_group_id_97559544">
+      <ColNames>group_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="137" parent="15">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="138" parent="15">
+      <ColNames>user_id</ColNames>
+      <RefTableName>auth_user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="139" parent="15">
+      <ColNames>group_id</ColNames>
+      <RefTableName>auth_group</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="140" parent="16" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="141" parent="16" name="user_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="142" parent="16" name="permission_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="143" parent="16" name="auth_user_user_permissions_user_id_permission_id_14a6b632_uniq">
+      <ColNames>user_id
+permission_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="144" parent="16" name="auth_user_user_permissions_user_id_a95ead1b">
+      <ColNames>user_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="145" parent="16" name="auth_user_user_permissions_permission_id_1fbb5f2c">
+      <ColNames>permission_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="146" parent="16">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="147" parent="16">
+      <ColNames>user_id</ColNames>
+      <RefTableName>auth_user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="148" parent="16">
+      <ColNames>permission_id</ColNames>
+      <RefTableName>auth_permission</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="149" parent="17" name="BID">
+      <Position>1</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="150" parent="17" name="BPlant">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="151" parent="17" name="BDescription">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="152" parent="17" name="BPhoneNum">
+      <Position>4</Position>
+      <DataType>varchar(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="153" parent="17" name="BPrice">
+      <Position>5</Position>
+      <DataType>decimal|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="154" parent="17" name="releaseBTime">
+      <Position>6</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="155" parent="17" name="User_userId">
+      <Position>7</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <index id="156" parent="17" name="sqlite_autoindex_buypost_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>BID</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="157" parent="17" name="buypost_User_userId_811182e9">
+      <ColNames>User_userId</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="158" parent="17">
+      <ColNames>BID</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_buypost_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="159" parent="17">
+      <ColNames>User_userId</ColNames>
+      <RefTableName>user</RefTableName>
+      <RefColNames>userId</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="160" parent="18" name="CartID">
+      <Position>1</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="161" parent="18" name="CItemName">
+      <Position>2</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="162" parent="18" name="CItemNum">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="163" parent="18" name="CItemBasicPrice">
+      <Position>4</Position>
+      <DataType>decimal|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="164" parent="18" name="User_userId">
+      <Position>5</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <index id="165" parent="18" name="sqlite_autoindex_cart_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>CartID</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="166" parent="18" name="cart_User_userId_41305984">
+      <ColNames>User_userId</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="167" parent="18">
+      <ColNames>CartID</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_cart_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="168" parent="18">
+      <ColNames>User_userId</ColNames>
+      <RefTableName>user</RefTableName>
+      <RefColNames>userId</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="169" parent="19" name="CTitle">
+      <Position>1</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="170" parent="19" name="CID">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="171" parent="19" name="CDescription">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="172" parent="19" name="CImage">
+      <Position>4</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="173" parent="19" name="releaseCTime">
+      <Position>5</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="174" parent="19" name="User_userId">
+      <Position>6</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <index id="175" parent="19" name="sqlite_autoindex_commentpost_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>CID</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="176" parent="19" name="commentpost_User_userId_a68cda26">
+      <ColNames>User_userId</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="177" parent="19">
+      <ColNames>CID</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_commentpost_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="178" parent="19">
+      <ColNames>User_userId</ColNames>
+      <RefTableName>user</RefTableName>
+      <RefColNames>userId</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="179" parent="20" name="CEid">
+      <Position>1</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="180" parent="20" name="addTime">
+      <Position>2</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="181" parent="20" name="CName">
+      <Position>3</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="182" parent="20" name="CValue">
+      <Position>4</Position>
+      <DataType>decimal|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="183" parent="20" name="CUnit">
+      <Position>5</Position>
+      <DataType>varchar(10)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="184" parent="20" name="CPlantStage">
+      <Position>6</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="185" parent="20" name="CNotes">
+      <Position>7</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="186" parent="20" name="IncubatorUsing_IUNo">
+      <Position>8</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <index id="187" parent="20" name="sqlite_autoindex_customenvironment_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>CEid</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="188" parent="20" name="customenvironment_IncubatorUsing_IUNo_25025453">
+      <ColNames>IncubatorUsing_IUNo</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="189" parent="20">
+      <ColNames>CEid</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_customenvironment_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="190" parent="20">
+      <ColNames>IncubatorUsing_IUNo</ColNames>
+      <RefTableName>incubatorusing</RefTableName>
+      <RefColNames>IUNo</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="191" parent="21" name="CStaticid">
+      <Position>1</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="192" parent="21" name="CName">
+      <Position>2</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="193" parent="21" name="CSValue">
+      <Position>3</Position>
+      <DataType>decimal|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="194" parent="21" name="CUnit">
+      <Position>4</Position>
+      <DataType>varchar(10)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="195" parent="21" name="Notes">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="196" parent="21" name="PlantStatistics_PStaticid">
+      <Position>6</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <index id="197" parent="21" name="sqlite_autoindex_customstatistics_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>CStaticid</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="198" parent="21" name="customstatistics_PlantStatistics_PStaticid_b3897214">
+      <ColNames>PlantStatistics_PStaticid</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="199" parent="21">
+      <ColNames>CStaticid</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_customstatistics_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="200" parent="21">
+      <ColNames>PlantStatistics_PStaticid</ColNames>
+      <RefTableName>plantstatistics</RefTableName>
+      <RefColNames>PStaticid</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="201" parent="22" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="202" parent="22" name="action_time">
+      <Position>2</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="203" parent="22" name="object_id">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="204" parent="22" name="object_repr">
+      <Position>4</Position>
+      <DataType>varchar(200)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="205" parent="22" name="change_message">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="206" parent="22" name="content_type_id">
+      <Position>6</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="207" parent="22" name="user_id">
+      <Position>7</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="208" parent="22" name="action_flag">
+      <Position>8</Position>
+      <DataType>smallint unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="209" parent="22" name="django_admin_log_content_type_id_c4bce8eb">
+      <ColNames>content_type_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="210" parent="22" name="django_admin_log_user_id_c564eba6">
+      <ColNames>user_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="211" parent="22">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="212" parent="22">
+      <ColNames>content_type_id</ColNames>
+      <RefTableName>django_content_type</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="213" parent="22">
+      <ColNames>user_id</ColNames>
+      <RefTableName>auth_user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <check id="214" parent="22">
+      <Predicate>&quot;action_flag&quot; &gt;= 0</Predicate>
+    </check>
+    <column id="215" parent="23" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="216" parent="23" name="app_label">
+      <Position>2</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="217" parent="23" name="model">
+      <Position>3</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="218" parent="23" name="django_content_type_app_label_model_76bd3d3b_uniq">
+      <ColNames>app_label
+model</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="219" parent="23">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="220" parent="24" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="221" parent="24" name="app">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="222" parent="24" name="name">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="223" parent="24" name="applied">
+      <Position>4</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="224" parent="24">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="225" parent="25" name="session_key">
+      <Position>1</Position>
+      <DataType>varchar(40)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="226" parent="25" name="session_data">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="227" parent="25" name="expire_date">
+      <Position>3</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="228" parent="25" name="sqlite_autoindex_django_session_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>session_key</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="229" parent="25" name="django_session_expire_date_a5c62663">
+      <ColNames>expire_date</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="230" parent="25">
+      <ColNames>session_key</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_django_session_1</UnderlyingIndexName>
+    </key>
+    <column id="231" parent="26" name="fixinfoID">
+      <Position>1</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="232" parent="26" name="ifOver">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="233" parent="26" name="fixManager">
+      <Position>3</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <column id="234" parent="26" name="fixputDate">
+      <Position>4</Position>
+      <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="235" parent="26" name="Incubator_IncuNo">
+      <Position>5</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <column id="236" parent="26" name="User_userId">
+      <Position>6</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <index id="237" parent="26" name="sqlite_autoindex_fixinfo_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>fixinfoID</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="238" parent="26" name="fixinfo_Incubator_IncuNo_080397b0">
+      <ColNames>Incubator_IncuNo</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="239" parent="26" name="fixinfo_User_userId_f9c73eb1">
+      <ColNames>User_userId</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="240" parent="26">
+      <ColNames>fixinfoID</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_fixinfo_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="241" parent="26">
+      <ColNames>Incubator_IncuNo</ColNames>
+      <RefTableName>incubator</RefTableName>
+      <RefColNames>IncuNo</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="242" parent="26">
+      <ColNames>User_userId</ColNames>
+      <RefTableName>user</RefTableName>
+      <RefColNames>userId</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="243" parent="27" name="IncuNo">
+      <Position>1</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="244" parent="27" name="IncuName">
+      <Position>2</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="245" parent="27" name="purchaseTime">
+      <Position>3</Position>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <column id="246" parent="27" name="User_userId">
+      <Position>4</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <column id="247" parent="27" name="managerStage">
+      <Position>5</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <column id="248" parent="27" name="useTime">
+      <Position>6</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <index id="249" parent="27" name="sqlite_autoindex_incubator_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>IncuNo</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="250" parent="27" name="incubator_User_userId_11643905">
+      <ColNames>User_userId</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="251" parent="27">
+      <ColNames>IncuNo</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_incubator_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="252" parent="27">
+      <ColNames>User_userId</ColNames>
+      <RefTableName>user</RefTableName>
+      <RefColNames>userId</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="253" parent="28" name="InchardinfID">
+      <Position>1</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="254" parent="28" name="iCPU">
+      <Position>2</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <column id="255" parent="28" name="iTemph">
+      <Position>3</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <column id="256" parent="28" name="iHumh">
+      <Position>4</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <column id="257" parent="28" name="iPressh">
+      <Position>5</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <column id="258" parent="28" name="iLighth">
+      <Position>6</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <column id="259" parent="28" name=" inchardinfDate">
+      <Position>7</Position>
+      <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="260" parent="28" name="Incubator_IncuNo">
+      <Position>8</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <index id="261" parent="28" name="sqlite_autoindex_incubatorhardinf_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>InchardinfID</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="262" parent="28" name="incubatorhardinf_Incubator_IncuNo_0d0d264e">
+      <ColNames>Incubator_IncuNo</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="263" parent="28">
+      <ColNames>InchardinfID</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_incubatorhardinf_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="264" parent="28">
+      <ColNames>Incubator_IncuNo</ColNames>
+      <RefTableName>incubator</RefTableName>
+      <RefColNames>IncuNo</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="265" parent="29" name="IUNo">
+      <Position>1</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="266" parent="29" name="initializeTime">
+      <Position>2</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="267" parent="29" name="ITemperature">
+      <Position>3</Position>
+      <DataType>real|0s</DataType>
+    </column>
+    <column id="268" parent="29" name="IHumidity">
+      <Position>4</Position>
+      <DataType>real|0s</DataType>
+    </column>
+    <column id="269" parent="29" name="IPressure">
+      <Position>5</Position>
+      <DataType>real|0s</DataType>
+    </column>
+    <column id="270" parent="29" name="ILightlntensity">
+      <Position>6</Position>
+      <DataType>real|0s</DataType>
+    </column>
+    <column id="271" parent="29" name="Incubator_IncuNo">
+      <Position>7</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <column id="272" parent="29" name="Plant_plantName">
+      <Position>8</Position>
+      <DataType>varchar(50)|0s</DataType>
+    </column>
+    <column id="273" parent="29" name="User_userId">
+      <Position>9</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <index id="274" parent="29" name="sqlite_autoindex_incubatorusing_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>IUNo</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="275" parent="29" name="incubatorusing_Incubator_IncuNo_7079e388">
+      <ColNames>Incubator_IncuNo</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="276" parent="29" name="incubatorusing_Plant_plantName_63a3e6b1">
+      <ColNames>Plant_plantName</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="277" parent="29" name="incubatorusing_User_userId_e4d8cfa5">
+      <ColNames>User_userId</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="278" parent="29">
+      <ColNames>IUNo</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_incubatorusing_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="279" parent="29">
+      <ColNames>Incubator_IncuNo</ColNames>
+      <RefTableName>incubator</RefTableName>
+      <RefColNames>IncuNo</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="280" parent="29">
+      <ColNames>Plant_plantName</ColNames>
+      <RefTableName>plant</RefTableName>
+      <RefColNames>plantName</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="281" parent="29">
+      <ColNames>User_userId</ColNames>
+      <RefTableName>user</RefTableName>
+      <RefColNames>userId</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="282" parent="30" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="283" parent="30" name="MTemperature">
+      <Position>2</Position>
+      <DataType>real|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="284" parent="30" name="MHumidity">
+      <Position>3</Position>
+      <DataType>real|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="285" parent="30" name="MPressure">
+      <Position>4</Position>
+      <DataType>real|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="286" parent="30" name="MLightlntensity">
+      <Position>5</Position>
+      <DataType>real|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="287" parent="30" name="MPlantStage">
+      <Position>6</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="288" parent="30" name="MScore">
+      <Position>7</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="289" parent="30" name="IncubatorUsing_IUNo">
+      <Position>8</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <column id="290" parent="30" name="MTime">
+      <Position>9</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="291" parent="30" name="monitorinform_IncubatorUsing_IUNo_109cc22e">
+      <ColNames>IncubatorUsing_IUNo</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="292" parent="30">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="293" parent="30">
+      <ColNames>IncubatorUsing_IUNo</ColNames>
+      <RefTableName>incubatorusing</RefTableName>
+      <RefColNames>IUNo</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="294" parent="31" name="orderId">
+      <Position>1</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="295" parent="31" name="ODateTime">
+      <Position>2</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="296" parent="31" name="OReceiverName">
+      <Position>3</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="297" parent="31" name="OAddress">
+      <Position>4</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="298" parent="31" name="OReceiverPhon">
+      <Position>5</Position>
+      <DataType>varchar(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="299" parent="31" name="orderTotalPrice">
+      <Position>6</Position>
+      <DataType>decimal|0s</DataType>
+    </column>
+    <column id="300" parent="31" name="User_userId">
+      <Position>7</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <index id="301" parent="31" name="sqlite_autoindex_order_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>orderId</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="302" parent="31" name="order_User_userId_7c93894c">
+      <ColNames>User_userId</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="303" parent="31">
+      <ColNames>orderId</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_order_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="304" parent="31">
+      <ColNames>User_userId</ColNames>
+      <RefTableName>user</RefTableName>
+      <RefColNames>userId</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="305" parent="32" name="orderItemId">
+      <Position>1</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="306" parent="32" name="OIName">
+      <Position>2</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="307" parent="32" name="OINum">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="308" parent="32" name="OIBasicPrice">
+      <Position>4</Position>
+      <DataType>decimal|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="309" parent="32" name="Order_orderId">
+      <Position>5</Position>
+      <DataType>varchar(50)|0s</DataType>
+    </column>
+    <column id="310" parent="32" name="Product_productID">
+      <Position>6</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <index id="311" parent="32" name="sqlite_autoindex_orderitem_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>orderItemId</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="312" parent="32" name="orderitem_Order_orderId_47ca7162">
+      <ColNames>Order_orderId</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="313" parent="32" name="orderitem_Product_productID_a01bbe6a">
+      <ColNames>Product_productID</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="314" parent="32">
+      <ColNames>orderItemId</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_orderitem_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="315" parent="32">
+      <ColNames>Order_orderId</ColNames>
+      <RefTableName>order</RefTableName>
+      <RefColNames>orderId</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="316" parent="32">
+      <ColNames>Product_productID</ColNames>
+      <RefTableName>product</RefTableName>
+      <RefColNames>productID</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="317" parent="33" name="plantName">
+      <Position>1</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="318" parent="33" name="paverMark">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="319" parent="33" name="pplantaverPeople">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="320" parent="33" name="pplantaverTime">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="321" parent="33" name="pplantsumPeople">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="322" parent="33" name="pplantsumTime">
+      <Position>6</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <index id="323" parent="33" name="sqlite_autoindex_plant_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>plantName</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="324" parent="33">
+      <ColNames>plantName</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_plant_1</UnderlyingIndexName>
+    </key>
+    <column id="325" parent="34" name="spID">
+      <Position>1</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="326" parent="34" name="spName">
+      <Position>2</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="327" parent="34" name="spIntrc">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="328" parent="34" name="spMark">
+      <Position>4</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="329" parent="34" name="spPlantstime">
+      <Position>5</Position>
+      <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="330" parent="34" name="spPlantetime">
+      <Position>6</Position>
+      <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="331" parent="34" name="spHeat">
+      <Position>7</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="332" parent="34" name="Incubator_IncuNo">
+      <Position>8</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <index id="333" parent="34" name="sqlite_autoindex_plantshow_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>spID</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="334" parent="34" name="plantshow_Incubator_IncuNo_b5d68f94">
+      <ColNames>Incubator_IncuNo</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="335" parent="34">
+      <ColNames>spID</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_plantshow_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="336" parent="34">
+      <ColNames>Incubator_IncuNo</ColNames>
+      <RefTableName>incubator</RefTableName>
+      <RefColNames>IncuNo</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="337" parent="35" name="PStaticid">
+      <Position>1</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="338" parent="35" name="STemperature">
+      <Position>2</Position>
+      <DataType>real|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="339" parent="35" name="SHumidity">
+      <Position>3</Position>
+      <DataType>real|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="340" parent="35" name="SPressure">
+      <Position>4</Position>
+      <DataType>real|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="341" parent="35" name="Slightlntensity">
+      <Position>5</Position>
+      <DataType>real|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="342" parent="35" name="Plant_plantName">
+      <Position>6</Position>
+      <DataType>varchar(50)|0s</DataType>
+    </column>
+    <column id="343" parent="35" name="plantStage">
+      <Position>7</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="344" parent="35" name="sqlite_autoindex_plantstatistics_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>PStaticid</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="345" parent="35" name="plantstatistics_Plant_plantName_3f78d25b">
+      <ColNames>Plant_plantName</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="346" parent="35">
+      <ColNames>PStaticid</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_plantstatistics_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="347" parent="35">
+      <ColNames>Plant_plantName</ColNames>
+      <RefTableName>plant</RefTableName>
+      <RefColNames>plantName</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="348" parent="36" name="productID">
+      <Position>1</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="349" parent="36" name="productName">
+      <Position>2</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="350" parent="36" name="pDescribtion">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="351" parent="36" name="pPrice">
+      <Position>4</Position>
+      <DataType>decimal|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="352" parent="36" name="productedDate">
+      <Position>5</Position>
+      <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="353" parent="36" name="expirationDate">
+      <Position>6</Position>
+      <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="354" parent="36" name="productRepertory">
+      <Position>7</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="355" parent="36" name="productUnit">
+      <Position>8</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="356" parent="36" name="Repository_productClass">
+      <Position>9</Position>
+      <DataType>varchar(50)|0s</DataType>
+    </column>
+    <index id="357" parent="36" name="sqlite_autoindex_product_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>productID</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="358" parent="36" name="product_Repository_productClass_ec24e83e">
+      <ColNames>Repository_productClass</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="359" parent="36">
+      <ColNames>productID</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_product_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="360" parent="36">
+      <ColNames>Repository_productClass</ColNames>
+      <RefTableName>repository</RefTableName>
+      <RefColNames>productClass</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="361" parent="37" name="PDid">
+      <Position>1</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="362" parent="37" name="PDName">
+      <Position>2</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="363" parent="37" name="PDValue">
+      <Position>3</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="364" parent="37" name="PDUnit">
+      <Position>4</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="365" parent="37" name="PDNotes">
+      <Position>5</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <column id="366" parent="37" name="Product_productID">
+      <Position>6</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <index id="367" parent="37" name="sqlite_autoindex_productdetail_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>PDid</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="368" parent="37" name="productdetail_Product_productID_a7b8cd1a">
+      <ColNames>Product_productID</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="369" parent="37">
+      <ColNames>PDid</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_productdetail_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="370" parent="37">
+      <ColNames>Product_productID</ColNames>
+      <RefTableName>product</RefTableName>
+      <RefColNames>productID</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="371" parent="38" name="productClass">
+      <Position>1</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="372" parent="38" name="sqlite_autoindex_repository_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>productClass</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="373" parent="38">
+      <ColNames>productClass</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_repository_1</UnderlyingIndexName>
+    </key>
+    <column id="374" parent="39" name="sdID">
+      <Position>1</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="375" parent="39" name="sdDate">
+      <Position>2</Position>
+      <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="376" parent="39" name="mostsellPerson">
+      <Position>3</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <column id="377" parent="39" name="mostsellInc">
+      <Position>4</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <column id="378" parent="39" name="mostsellarea">
+      <Position>5</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <index id="379" parent="39" name="sqlite_autoindex_selldetail_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>sdID</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="380" parent="39">
+      <ColNames>sdID</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_selldetail_1</UnderlyingIndexName>
+    </key>
+    <column id="381" parent="40" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="382" parent="40" name="areaName">
+      <Position>2</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <column id="383" parent="40" name="managerName">
+      <Position>3</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <key id="384" parent="40">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="385" parent="41" name="SID">
+      <Position>1</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="386" parent="41" name="SPlant">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="387" parent="41" name="SDescription">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="388" parent="41" name="SPhoneNum">
+      <Position>4</Position>
+      <DataType>varchar(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="389" parent="41" name="SPrice">
+      <Position>5</Position>
+      <DataType>decimal|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="390" parent="41" name="SImage">
+      <Position>6</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="391" parent="41" name="SScore">
+      <Position>7</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="392" parent="41" name="releaseSTime">
+      <Position>8</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="393" parent="41" name="User_userId">
+      <Position>9</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <index id="394" parent="41" name="sqlite_autoindex_sellpost_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>SID</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="395" parent="41" name="sellpost_User_userId_0c119666">
+      <ColNames>User_userId</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="396" parent="41">
+      <ColNames>SID</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_sellpost_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="397" parent="41">
+      <ColNames>User_userId</ColNames>
+      <RefTableName>user</RefTableName>
+      <RefColNames>userId</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="398" parent="42" name="type">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="399" parent="42" name="name">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="400" parent="42" name="tbl_name">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="401" parent="42" name="rootpage">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="402" parent="42" name="sql">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="403" parent="43" name="name">
+      <Position>1</Position>
+    </column>
+    <column id="404" parent="43" name="seq">
+      <Position>2</Position>
+    </column>
+    <column id="405" parent="44" name="userId">
+      <Position>1</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="406" parent="44" name="userPhoneNum">
+      <Position>2</Position>
+      <DataType>varchar(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="407" parent="44" name="userMail">
+      <Position>3</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="408" parent="44" name="userName">
+      <Position>4</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="409" parent="44" name="password">
+      <Position>5</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="410" parent="44" name="userState">
+      <Position>6</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="411" parent="44" name="registrationDate">
+      <Position>7</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="412" parent="44" name="userImg">
+      <Position>8</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="413" parent="44" name="userIntroduction">
+      <Position>9</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="414" parent="44" name="userLastlogintime">
+      <Position>10</Position>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <column id="415" parent="44" name="userSex">
+      <Position>11</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="416" parent="44" name="sqlite_autoindex_user_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>userId</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="417" parent="44" name="sqlite_autoindex_user_2">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>userPhoneNum</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="418" parent="44" name="sqlite_autoindex_user_3">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>userMail</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="419" parent="44" name="sqlite_autoindex_user_4">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>userName</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="420" parent="44">
+      <ColNames>userId</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_user_1</UnderlyingIndexName>
+    </key>
+    <key id="421" parent="44">
+      <ColNames>userPhoneNum</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_user_2</UnderlyingIndexName>
+    </key>
+    <key id="422" parent="44">
+      <ColNames>userMail</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_user_3</UnderlyingIndexName>
+    </key>
+    <key id="423" parent="44">
+      <ColNames>userName</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_user_4</UnderlyingIndexName>
+    </key>
+    <column id="424" parent="45" name="uslinkID">
+      <Position>1</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="425" parent="45" name="plantshow_spID">
+      <Position>2</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <column id="426" parent="45" name="User_userId">
+      <Position>3</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <index id="427" parent="45" name="sqlite_autoindex_usershowlink_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>uslinkID</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="428" parent="45" name="usershowlink_plantshow_spID_1af0acb6">
+      <ColNames>plantshow_spID</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="429" parent="45" name="usershowlink_User_userId_6506d1fb">
+      <ColNames>User_userId</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="430" parent="45">
+      <ColNames>uslinkID</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_usershowlink_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="431" parent="45">
+      <ColNames>plantshow_spID</ColNames>
+      <RefTableName>plantshow</RefTableName>
+      <RefColNames>spID</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="432" parent="45">
+      <ColNames>User_userId</ColNames>
+      <RefTableName>user</RefTableName>
+      <RefColNames>userId</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+  </database-model>
+</dataSource>

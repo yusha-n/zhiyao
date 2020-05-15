@@ -1,4 +1,4 @@
-#建立连接，接收参数、图像数据、用HTTP协议转发
+﻿#建立连接，接收参数、图像数据、用HTTP协议转发
 import socket,re
 import urllib.request,http.client,os,time
 import _thread

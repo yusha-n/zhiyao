@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Dashtreme Admin - Free Dashboard for Bootstrap 4 by Codervent</title>
+    <!-- loader-->
+    <link href="{% static 'iotSystem/assets/css/pace.min.css' %}" rel="stylesheet"/>
+    <script src="{% static 'iotSystem/assets/js/pace.min.js' %}"></script>
+    <!--favicon-->
+    <link rel="icon" href="{% static 'iotSystem/assets/images/favicon.ico' %}" type="image/x-icon">
+    <!-- simplebar CSS-->
+    <link href="{% static 'iotSystem/assets/plugins/simplebar/css/simplebar.css' %}" rel="stylesheet"/>
+    <!-- Bootstrap core CSS-->
+    <link href="{% static 'iotSystem/assets/css/bootstrap.min.css' %}" rel="stylesheet"/>
+    <!-- animate CSS-->
+    <link href="{% static 'iotSystem/assets/css/animate.css' %}" rel="stylesheet" type="text/css"/>
+    <!-- Icons CSS-->
+    <link href="{% static 'iotSystem/assets/css/icons.css' %}" rel="stylesheet" type="text/css"/>
+    <!-- Sidebar CSS-->
+    <link href="{% static 'iotSystem/assets/css/sidebar-menu.css' %}" rel="stylesheet"/>
+    <!-- Custom Style-->
+    <link href="{% static 'iotSystem/assets/css/app-style.css' %}" rel="stylesheet"/>
+
+    <!--zaizherkaishi-->
+    <script src="{% static 'iotSystem/Chart/dist/Chart.min.js' %}"></script>
+    <script src="{% static 'iotSystem/Chart/utils.js' %}"></script>
+    <style>
+			canvas {
+				-moz-user-select: none;
+				-webkit-user-select: none;
+				-ms-user-select: none;
+			}
+
+
+
+
+
+    </style>
+    <style type="text/css">/* Chart.js */
+	@keyframes chartjs-render-animation{from{opacity:.99}to{opacity:1}}.chartjs-render-monitor{animation:chartjs-render-animation 1ms}.chartjs-size-monitor,.chartjs-size-monitor-expand,.chartjs-size-monitor-shrink{position:absolute;direction:ltr;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1}.chartjs-size-monitor-expand>div{position:absolute;width:1000000px;height:1000000px;left:0;top:0}.chartjs-size-monitor-shrink>div{position:absolute;width:200%;height:200%;left:0;top:0}
+
+
+
+
+    </style>
+
+
+</head>
+
+<body class="bg-theme bg-theme1">
+
+<!-- start loader -->
+<div id="pageloader-overlay" class="visible incoming">
+    <div class="loader-wrapper-outer">
+        <div class="loader-wrapper-inner">
+            <div class="loader"></div>
+        </div>
+    </div>
+</div>
+<!-- end loader -->
+
+<!-- Start wrapper-->
+<div id="wrapper">
+
+    <!--Start sidebar-wrapper-->
+    <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
+        <div class="brand-logo">
+            <a href="index.html">
+                <img src="{% static 'iotSystem/assets/images/logo-icon.png' %}" class="logo-icon" alt="logo icon">
+                <h5 class="logo-text">ZhiYao Admin</h5>
+            </a>
+        </div>
+        <ul class="sidebar-menu do-nicescrol">
+            <li class="sidebar-header">主菜单</li>
+            <li>
+                <a href="index.html">
+                    <i class="zmdi zmdi-view-dashboard"></i> <span>连接</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="icons.html">
+                    <i class="zmdi zmdi-invert-colors"></i> <span>设备</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="forms.html">
+                    <i class="zmdi zmdi-format-list-bulleted"></i> <span>数据</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="tables.html">
+                    <i class="zmdi zmdi-grid"></i> <span>产品</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="calendar.html">
+                    <i class="zmdi zmdi-calendar-check"></i> <span>日程</span>
+                    <small class="badge float-right badge-light">New</small>
+                </a>
+            </li>
+
+            <li class="sidebar-header">LABELS</li>
+            <li><a href="javaScript:void();"><i class="zmdi zmdi-coffee text-danger"></i> <span>Important</span></a>
+            </li>
+            <li><a href="javaScript:void();"><i class="zmdi zmdi-chart-donut text-success"></i> <span>Warning</span></a>
+            </li>
+            <li><a href="javaScript:void();"><i class="zmdi zmdi-share text-info"></i> <span>Information</span></a></li>
+
+        </ul>
+
+    </div>
+    <!--End sidebar-wrapper-->
+
+
+    <!--Start topbar header-->
+    <header class="topbar-nav">
+        <nav class="navbar navbar-expand fixed-top">
+            <ul class="navbar-nav mr-auto align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link toggle-menu" href="javascript:void();">
+                        <i class="icon-menu menu-icon"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <form class="search-bar">
+                        <input type="text" class="form-control" placeholder="Enter keywords">
+                        <a href="javascript:void();"><i class="icon-magnifier"></i></a>
+                    </form>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav align-items-center right-nav-link">
+                <li class="nav-item dropdown-lg">
+                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" data-toggle="dropdown"
+                       href="javascript:void();">
+                        <i class="fa fa-envelope-open-o"></i></a>
+                </li>
+                <li class="nav-item dropdown-lg">
+                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" data-toggle="dropdown"
+                       href="javascript:void();">
+                        <i class="fa fa-bell-o"></i></a>
+                </li>
+                <li class="nav-item language">
+                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" data-toggle="dropdown"
+                       href="javascript:void();"><i class="fa fa-flag"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li class="dropdown-item"><i class="flag-icon flag-icon-gb mr-2"></i> English</li>
+                        <li class="dropdown-item"><i class="flag-icon flag-icon-fr mr-2"></i> French</li>
+                        <li class="dropdown-item"><i class="flag-icon flag-icon-cn mr-2"></i> Chinese</li>
+                        <li class="dropdown-item"><i class="flag-icon flag-icon-de mr-2"></i> German</li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#">
+                        <span class="user-profile"><img src="https://via.placeholder.com/110x110" class="img-circle"
+                                                        alt="user avatar"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li class="dropdown-item user-details">
+                            <a href="javaScript:void();">
+                                <div class="media">
+                                    <div class="avatar"><img class="align-self-start mr-3"
+                                                             src="https://via.placeholder.com/110x110"
+                                                             alt="user avatar"></div>
+                                    <div class="media-body">
+                                        <h6 class="mt-2 user-title">Sarajhon Mccoy</h6>
+                                        <p class="user-subtitle">mccoy@example.com</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item"><i class="icon-envelope mr-2"></i> Inbox</li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item"><i class="icon-wallet mr-2"></i> Account</li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item"><i class="icon-settings mr-2"></i> Setting</li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item"><i class="icon-power mr-2"></i> Logout</li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!--End topbar header-->
+    <div class="clearfix"></div>
+    <div class="content-wrapper">
+        <div class="container-fluid">
+
+
+            {% if box and env_list %}
+            <div class="row">
+
+                <div class="col-12 col-lg-10 col-xl-10">
+                    <div class="card">
+                        <div class="card-header">近期数据
+                            <div class="card-action">
+                                <div class="dropdown">
+                                    <a href="javascript:void();" class="dropdown-toggle dropdown-toggle-nocaret"
+                                       data-toggle="dropdown">
+                                        <i class="icon-options"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="javascript:void();">查看前5条记录</a>
+                                        <a class="dropdown-item" href="javascript:void();">Another action</a>
+                                        <a class="dropdown-item" href="javascript:void();">Something else here</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="javascript:void();">Separated link</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container-2" style="height:80%; width:100%;">
+
+                                <div class="chartjs-size-monitor">
+                                    <div class="chartjs-size-monitor-expand">
+                                        <div class=""></div>
+                                    </div>
+                                    <div class="chartjs-size-monitor-shrink">
+                                        <div class=""></div>
+                                    </div>
+                                </div>
+                                <canvas id="chart1" style="display: block; height: 180px; width: 360px;"
+                                        width="720" height="360" class="chartjs-render-monitor"></canvas>
+
+
+                                <!--                                <div class="chart-container" style="position: relative; height:40vh; width:80vw">-->
+                                <!--                                    <canvas id="chart1" style="display: block; "-->
+                                <!--                                            width="1446" height="722" class="chartjs-render-monitor"></canvas>-->
+                                <!--                                </div>-->
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table align-items-center">
+                                <thead>
+                                <tr>
+                                    {% for dct in env_list.0 %}
+                                    {% for key in dct %}
+                                    <th> {{ key }}</th>
+                                    {% endfor %}
+                                    {% endfor %}
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for env in env_list %}
+                                <tr>
+                                    {% for dct in env %}
+                                    {% for val in dct.values %}
+                                    <td><i {% if forloop.counter|divisibleby:"4" %} class="fa fa-circle text-white mr-2"
+                                        {% elif forloop.counter|divisibleby:"3" %} class="fa fa-circle text-light-1
+                                        mr-2"
+                                        {% elif forloop.counter|divisibleby:"2" %} class="fa fa-circle text-light-2
+                                        mr-2"
+                                        {% elif forloop.counter|divisibleby:"1" %} class="fa fa-circle text-light-3
+                                        mr-2">
+                                        {% endif %}
+                                        </i>{{ val }}
+                                    </td>
+                                    {% endfor %}
+                                    {% endfor %}
+                                </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div><!--End Row-->
+            {% endif %}
+
+            <div class="row">
+                <div class="col-12 col-lg-4 col-xl-4">
+                    <div class="card">
+                        <div class="card-header">Recent Order Tables
+                            <div class="card-action">
+                                <div class="dropdown">
+                                    <a href="javascript:void();" class="dropdown-toggle dropdown-toggle-nocaret"
+                                       data-toggle="dropdown">
+                                        <i class="icon-options"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="javascript:void();">Action</a>
+                                        <a class="dropdown-item" href="javascript:void();">Another action</a>
+                                        <a class="dropdown-item" href="javascript:void();">Something else here</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="javascript:void();">Separated link</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <form role="form" method="post" action="{% url 'iotSystem:control' box.iden %}">
+                                <table class="table align-items-center table-flush table-borderless">
+                                    {% csrf_token %}
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <label>空气温度：</label>
+                                            <input type="number" name="ta" min="0" max="100" step="1" value="33"/>
+                                        </td>
+                                        <td>
+                                            <label>土壤温度</label>
+                                            <input type="number" name="tl" min="0" max="100" step="1" value="5"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>空气湿度：</label>
+                                            <input type="number" name="ha" min="0" max="100" step="1" value="60"/>
+                                        </td>
+                                        <td>
+                                            <label>土壤湿度</label>
+                                            <input type="number" name="hl" min="0" max="100" step="1" value="13"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>光照</label>
+                                            <input type="number" name="il" min="0" max="10000" step="100" value="3182"/>
+                                        </td>
+                                        <td>
+                                            <label>压强</label>
+                                            <input type="number" name="pr" min="101" max="1000" step="0.5"
+                                                   value="101.5"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <button type="submit" class="btn btn-light px-5"><i
+                                                    class="zmdi zmdi-assignment-return"></i> 重置
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button type="submit" class="btn btn-light px-5"><i
+                                                    class="zmdi zmdi-delicious"></i> 提交
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-8 col-xl-8">
+                    <div class="card">
+                        <div class="card-header">Weekly sales
+                            <div class="card-action">
+                                <div class="dropdown">
+                                    <a href="javascript:void();" class="dropdown-toggle dropdown-toggle-nocaret"
+                                       data-toggle="dropdown">
+                                        <i class="icon-options"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="javascript:void();">Action</a>
+                                        <a class="dropdown-item" href="javascript:void();">Another action</a>
+                                        <a class="dropdown-item" href="javascript:void();">Something else here</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="javascript:void();">Separated link</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table align-items-center">
+                                <thead>
+                                <tr>
+                                    {% for dct in ctl_list.0 %}
+                                    {% for key in dct %}
+                                    <th> {{ key }}</th>
+                                    {% endfor %}
+                                    {% endfor %}
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for ctl in ctl_list %}
+                                <tr>
+                                    {% for dct in ctl %}
+                                    {% for val in dct.values %}
+                                    <td><i {% if forloop.counter|divisibleby:"4" %} class="fa fa-circle text-white mr-2"
+                                        {% elif forloop.counter|divisibleby:"3" %} class="fa fa-circle text-light-1
+                                        mr-2"
+                                        {% elif forloop.counter|divisibleby:"2" %} class="fa fa-circle text-light-2
+                                        mr-2"
+                                        {% elif forloop.counter|divisibleby:"1" %} class="fa fa-circle text-light-3
+                                        mr-2">
+                                        {% endif %}
+                                        </i>{{ val }}
+                                    </td>
+                                    {% endfor %}
+                                    {% endfor %}
+                                </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div><!--End Row-->
+
+
+        </div>
+    </div>
+
+
+    <!--Start Back To Top Button-->
+    <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+    <!--End Back To Top Button-->
+
+    <!--Start footer-->
+    <footer class="footer">
+        <div class="container">
+            <div class="text-center">
+                Copyright © 2018 Dashtreme Admin
+            </div>
+        </div>
+    </footer>
+    <!--End footer-->
+
+    <!--start color switcher-->
+    <div class="right-sidebar">
+        <div class="switcher-icon">
+            <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
+        </div>
+        <div class="right-sidebar-content">
+
+            <p class="mb-0">Gaussion Texture</p>
+            <hr>
+
+            <ul class="switcher">
+                <li id="theme1"></li>
+                <li id="theme2"></li>
+                <li id="theme3"></li>
+                <li id="theme4"></li>
+                <li id="theme5"></li>
+                <li id="theme6"></li>
+            </ul>
+
+            <p class="mb-0">Gradient Background</p>
+            <hr>
+
+            <ul class="switcher">
+                <li id="theme7"></li>
+                <li id="theme8"></li>
+                <li id="theme9"></li>
+                <li id="theme10"></li>
+                <li id="theme11"></li>
+                <li id="theme12"></li>
+                <li id="theme13"></li>
+                <li id="theme14"></li>
+                <li id="theme15"></li>
+            </ul>
+
+        </div>
+    </div>
+    <!--end color switcher-->
+
+</div><!--End wrapper-->
+
+
+<!-- Bootstrap core JavaScript-->
+<script src="{% static 'iotSystem/assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'iotSystem/assets/js/popper.min.js' %}"></script>
+<script src="{% static 'iotSystem/assets/js/bootstrap.min.js' %}"></script>
+
+<!-- simplebar js -->
+<script src="{% static 'iotSystem/assets/plugins/simplebar/js/simplebar.js' %}"></script>
+<!-- sidebar-menu js -->
+<script src="{% static 'iotSystem/assets/js/sidebar-menu.js' %}"></script>
+
+<!-- Custom scripts -->
+<script src="{% static 'iotSystem/assets/js/app-script.js' %}"></script>
+
+<script>
+    function my_config(){
+            var humi_land_Data = [],temp_land_Data=[],temp_area_Data=[],humi_area_Data=[],pres_Data=[],illu_Data=[];
+            var data={{ data_list|safe }};
+            var data_time = [];
+            for(var i=0;i<data.length;i++)
+            {
+                data_time.push(
+                    data[i].time
+                );
+
+                humi_land_Data.push(
+                    data[i].humi_land
+                );
+                humi_area_Data.push(
+                    data[i].humi_area
+                );
+                  temp_land_Data.push(
+                    data[i].temp_land
+                );
+                  temp_area_Data.push(
+                    data[i].temp_area
+                );
+                  pres_Data.push(
+                   data[i].pres
+                );
+                  illu_Data.push(
+                  data[i].illu
+                );
+            }
+
+        var config = {
+				type: 'line',
+				data: {
+					labels: data_time,
+					datasets: [{
+						label: '土壤湿度',
+						data: humi_land_Data,
+						backgroundColor: window.chartColors.red,
+						borderColor: window.chartColors.red,
+						fill: false,
+						borderDash: [5, 5],
+						pointRadius: 15,
+						pointHoverRadius: 10,
+					}, {
+						label: '空气湿度',
+						data: humi_area_Data,
+						backgroundColor: window.chartColors.blue,
+						borderColor: window.chartColors.blue,
+						fill: false,
+						borderDash: [5, 5],
+						pointRadius: [2, 4, 6, 18, 0, 12, 20],
+					}, {
+						label: '土壤温度',
+						data: temp_land_Data,
+						backgroundColor: window.chartColors.green,
+						borderColor: window.chartColors.green,
+						fill: false,
+						pointHoverRadius: 20,
+					}, {
+						label: '空气温度',
+						data: temp_area_Data,
+						backgroundColor: window.chartColors.yellow,
+						borderColor: window.chartColors.yellow,
+						fill: false,
+						pointHitRadius: 20,
+					}, {
+					    label: '压强',
+					    data: pres_Data,
+					    backgroundColor: window.chartColors.red,
+					    borderColor: window.chartColors.red,
+					    fill: false,
+					    pointHoverRadius: 15,
+					}, {
+                        label: '光照',
+                        data: illu_Data,
+                        backgroundColor: window.chartColors.green,
+                        borderColor: window.chartColors.green,
+                        fill: false,
+                        borderDash: [3, 3],
+						pointRadius: 6,
+					}]
+
+				},
+				options: {
+					responsive: true,
+					legend: {
+						position: 'bottom',
+					},
+					hover: {
+						mode: 'index'
+					},
+					scales: {
+						xAxes: [{
+							display: true,
+							scaleLabel: {
+								display: true,
+								labelString: 'Time'
+							}
+						}],
+						yAxes: [{
+							display: true,
+							scaleLabel: {
+								display: true,
+								labelString: 'Value'
+							}
+						}]
+					},
+					title: {
+						display: true,
+						text: '折线图-培养箱内部环境'
+					},
+
+				}
+			};
+		return config;
+    }
+			window.onload = function() {
+				var ctx = document.getElementById('chart1').getContext('2d');
+				window.myLine = new Chart(ctx, my_config());
+			};
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

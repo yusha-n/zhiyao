@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta name="keywords" content="IO+物联网系统">
+    <meta name="description" content="IO+物联网系统">
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <link rel="shortcut icon" href="favicon.ico"> <link href="/statics/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/statics/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="/statics/css/animate.css" rel="stylesheet">
+    <link href="/statics/css/style.css?v=4.1.0" rel="stylesheet">
+
+    <title>实时数据</title>
+     <script src="/statics/js/loading.js"></script>
+	<link href="/statics/css/bootstrapSwitch.css?v=3.3.6" rel="stylesheet">
+    <!-- 引入 echarts.js -->
+	 <script src="/statics/js/jquery.min.js?v=2.1.4"></script>
+    <script src="https://cdn.bootcss.com/echarts/4.1.0.rc2/echarts-en.min.js"></script>
+    <script src="/statics/js/bootstrapSwitch.js"></script>
+
+
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+
+    <div id="wrapper">
+        <!--左侧导航开始-->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="nav-close"><i class="fa fa-times-circle"></i>
+            </div>
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                          <!--  <span><img alt="image" class="img-circle" src="img/profile_small.jpg" /></span> !-->
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                               <span class="block m-t-xs"><strong class="font-bold">{{ request.user.username }}</strong></span>
+                                <span class="text-muted text-xs block">管理员<b class="caret"></b></span>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a  href="form_avatar.html">修改头像</a>
+                                </li>
+                                <li><a  href="111profile.html">个人资料</a>
+                                </li>
+                                <li><a  href="contacts.html">联系我们</a>
+                                </li>
+                                <li><a  href="mailbox.html">信箱</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li><a href="{%  url 'users:logout' %}">安全退出</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">IOT
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-home"></i>
+                            <span class="nav-label">项目介绍</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                             <li>
+                                <a  href="{%  url 'iotSystem:introduce' %}" data-index="0">时间线</a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-tint"></i>
+                            <span class="nav-label">数据信息</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a  href="{%  url 'iotSystem:data_dis' %}" data-index="0">实时数据</a>
+                            </li>
+                            <li>
+                                <a  href="{%  url 'iotSystem:data_history' %}">历史数据</a>
+                            </li>
+                            <li>
+                                <a  href="{%  url 'iotSystem:historyDataFilter' %}">历史数据分析</a>
+                            </li>
+                        </ul>
+
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-bell"></i>
+                            <span class="nav-label">报警状态</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                             <li>
+                                <a  href="{%  url 'iotSystem:warningHistory' %}">报警历史</a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-map-marker"></i>
+                            <span class="nav-label">传感器位置</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                             <li>
+                                <a href="{%  url 'iotSystem:position' %}">当前位置</a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-wrench"></i>
+                            <span class="nav-label">设备控制</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                             <li>
+                                 <a href="{% url 'iotSystem:control' %}"> 控制 </a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+                    <!--
+                    <li>
+                        <a  href="layouts.html"><i class="fa fa-columns"></i> <span class="nav-label">设备监控</span></a>
+                    </li>
+         
+                    !-->
+
+                </ul>
+            </div>
+        </nav>
+        <!--左侧导航结束-->
+        <!--右侧部分开始-->
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                        <form role="search" class="navbar-form-custom" method="post" action="search_results.html">
+                            <div class="form-group">
+                                <input type="text" placeholder="请输入您需要查找的内容 …" class="form-control" name="top-search" id="top-search">
+                            </div>
+                        </form>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right" >
+                        <li style="margin-top:20px;">IO+物联系统
+						</li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="row content-tabs">
+                <button class="roll-nav roll-left J_tabLeft"><i class="fa fa-backward"></i>
+                </button>
+                <nav class="page-tabs J_menuTabs">
+                    <div class="page-tabs-content">
+                        <a href="{% url 'iotSystem:data_dis' %}"  >首页</a>
+
+                    </div>
+                </nav>
+                <button class="roll-nav roll-right J_tabRight"><i class="fa fa-forward"></i>
+                </button>
+                <div class="btn-group roll-nav roll-right">
+                    <button class="dropdown J_tabClose" data-toggle="dropdown">关闭操作<span class="caret"></span>
+
+                    </button>
+                    <ul role="menu" class="dropdown-menu dropdown-menu-right">
+                        <li class="J_tabShowActive"><a>定位当前选项卡</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="J_tabCloseAll"><a>关闭全部选项卡</a>
+                        </li>
+                        <li class="J_tabCloseOther"><a>关闭其他选项卡</a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="{%  url 'users:logout' %}" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
+            </div>
+            <div class="row J_mainContent" id="content-main">
+               <div class="container">
+		<ul class="list-group">
+			<li class="list-group-item">欢迎进入物联网实时监控系统</li>
+
+		</ul>
+		<div class="row" >
+			<div class="col-md-6" id="main" style="height:400px;">
+			</div>
+			<div class="col-md-6" style="border-left:red 2px solid;height:400px;">
+				<ul class="list-group">
+					<li class="list-group-item">气体实时数据</li>
+				</ul>
+
+				<form role="form">
+				  <div class="form-group">
+					<label for="name">温度</label>
+					<input type="text" class="form-control"name="temp" disabled="disabled">
+					<label for="name">湿度</label>
+					<!--<input type="text" class="form-control" name="humi" disabled="disabled">
+                      <label for="name">光照</label>
+                      !-->
+					<input type="text" class="form-control" name="humi" disabled="disabled">
+                      <label for="name">PM2.5粉尘</label>
+					<input type="text" class="form-control" name="pm" disabled="disabled">
+				  </div>
+				 </form>
+
+                <!--  实时控制家用电气!-->
+{#？#}
+{#                            <div class="switch" id="myswitch2">#}
+{#                                 <input type="checkbox"  />#}
+{#                            </div>#}
+                    </div>
+			</div>
+		</div>
+
+
+	</div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+	window.onload = function(){
+	$(function()
+	{
+
+			var myChart = echarts.init(document.getElementById('main'));
+            var humiData = [],tempData=[],pmData=[];
+            var data={{ data_list|safe }};
+            for(var i=0;i<data.length;i++)
+            {
+                humiData.push({
+                    name:data[i].time,
+                    value:[data[i].time,data[i].humi]
+                });
+                  tempData.push({
+                    name:data[i].time,
+                    value:[data[i].time,data[i].temp]
+                });
+                  pmData.push({
+                    name:data[i].time,
+                    value:[data[i].time,data[i].pm]
+                });
+            }
+option = {
+    title: {
+        text: '实时数据'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['温度','湿度','pm']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+       type:'time'
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [
+        {
+            name:'温度',
+            type:'line',
+
+            data:tempData
+        },
+        {
+            name:'湿度',
+            type:'line',
+
+            data:humiData
+        },
+        {
+            name:'pm',
+            type:'line',
+
+            data:pmData
+        }
+    ]
+};
+//第一次初始化用
+myChart.setOption(option);
+var timeFlag="";
+                //ajax
+        setInterval(function () {
+                        //ajax请求数据
+                    $.ajax({
+                            cache:false,
+                            type:"POST",
+                            url:"{% url 'iotSystem:ajax_data' %}",
+                            async:true,
+                            beforeSend:function(xhr, settings){
+                                    xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+                                },
+                            success:function(data){
+                                if(timeFlag==data.time) return;
+                                timeFlag=data.time;
+                                $("input[name='temp']").val(data.temp);
+                                $("input[name='humi']").val(data.humi+"%");
+                                $("input[name='pm']").val(data.pm);
+                                     humiData.shift();
+                                    humiData.push({
+                                    name:data.time,
+                                    value:[data.time,data.humi]
+                                });
+                                    tempData.shift();
+                                    tempData.push({
+                                    name:data.time,
+                                    value:[data.time,data.temp]
+                                });
+                                pmData.shift();
+                                    pmData.push({
+                                    name:data.time,
+                                    value:[data.time,data.pm]
+                                });
+                                             myChart.setOption({
+                                                        series: [
+                                                                    {
+                                                                        name:'温度',
+                                                                        type:'line',
+
+                                                                        data:tempData
+                                                                    },
+                                                                    {
+                                                                        name:'湿度',
+                                                                        type:'line',
+
+                                                                        data:humiData
+                                                                    },
+                                                                    {
+                                                                        name:'pm',
+                                                                        type:'line',
+
+                                                                        data:pmData
+                                                                    }
+                                                                ]
+                                                });
+
+                            }
+                        });
+
+}, 2000);
+        //first request
+                    $.ajax({
+                            cache:false,
+                            type:"POST",
+                            url:"{% url 'iotSystem:ajax_data' %}",
+                            async:true,
+                            beforeSend:function(xhr, settings){
+                                    xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+                                },
+                            success:function(data){
+                                if(timeFlag==data.time) return;
+                                timeFlag=data.time;
+                                $("input[name='temp']").val(data.temp);
+                                $("input[name='humi']").val(data.humi+"%");
+                                $("input[name='pm']").val(data.pm);
+                                     humiData.unshift();
+                                    humiData.push({
+                                    name:data.time,
+                                    value:[data.time,data.humi]
+                                });
+                                    tempData.unshift();
+                                    tempData.push({
+                                    name:data.time,
+                                    value:[data.time,data.temp]
+                                });
+                                pmData.unshift();
+                                    pmData.push({
+                                    name:data.time,
+                                    value:[data.time,data.pm]
+                                });
+                                             myChart.setOption({
+                                                        series: [
+                                                                    {
+                                                                        name:'温度',
+                                                                        type:'line',
+
+                                                                        data:tempData
+                                                                    },
+                                                                    {
+                                                                        name:'湿度',
+                                                                        type:'line',
+
+                                                                        data:humiData
+                                                                    },
+                                                                    {
+                                                                        name:'pm',
+                                                                        type:'line',
+
+                                                                        data:pmData
+                                                                    }
+                                                                ]
+                                                });
+
+                            }
+                        });
+    });
+}
+ </script>
+            </div>
+            <div class="footer">
+                <div class="pull-right">&copy; 2018-2020 <a href="" target="_blank">IO+物联网系统</a>
+                </div>
+            </div>
+        </div>
+        <!--右侧部分结束-->
+
+    </div>
+
+    <!-- 全局js -->
+    <script src="/statics/js/jquery.min.js?v=2.1.4"></script>
+    <script src="/statics/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="/statics/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/statics/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/statics/js/plugins/layer/layer.min.js"></script>
+
+    <!-- 自定义js -->
+    <script src="/statics/js/hplus.js?v=4.1.0"></script>
+    <script type="text/javascript" src="/statics/js/contabs.js"></script>
+
+    <!-- 第三方插件 -->
+    <script src="/statics/js/plugins/pace/pace.min.js"></script>
+
+</body>
+
+</html>

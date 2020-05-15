@@ -1,5 +1,5 @@
 .bj{
-    background: url(/static/img/bj2.png);
+    background: url({% static'img/bj2.png'%});
     background-size: 100% 100%;
 }
 

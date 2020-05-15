@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>设备列表</title>
+
+</head>
+<body>
+
+<table border="1">
+    <tr>
+        <th>培养箱</th>
+        <th>编号</th>
+        <th>用户名</th>
+        <th>电话</th>
+        <th>状态</th>
+        <th>注册时间</th>
+        <th>   </th>
+    </tr>
+    {% for box in box_list %}
+      <tr>
+        <td>
+            <img style="height:50px; width:50px" src="{% static 'iotSystem/images/box.jpg' %}" alt="smile" />
+        </td>
+        <td id="{{ box.iden }}">{{ box.iden }}</td>
+        <td>{{ box.username }}</td>
+        <td>{{ box.phon }}</td>
+        <td>{{ box.stat }}</td>
+        <td>{{ box.time }}</td>
+        <td>
+            <button onclick="window.location.href='{% url 'iotSystem:dev-detail' box.iden %}'">查看</button>
+        </td>
+      </tr>
+    {% empty %}
+        <li> 你还没有设备-_- </li>
+    {% endfor %}
+</table>
+</body>
+</html>

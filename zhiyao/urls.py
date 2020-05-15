@@ -14,12 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, re_path
+from django.urls import path, re_path, include
 from app import views
 from django.views.static import serve
 from zhiyao.settings import MEDIA_ROOT
 
 urlpatterns = [
+    #zhiyao iot系统路径
+    path('iotSystem/', include('iotSystem.urls')),
+    path('users/', include('users.urls')),
+    #path('admin/', admin.site.urls),
+    #zhiyao论坛路径
     path('admin/', admin.site.urls),
     path('login/', views.login, name='login'),
     path('logout/', views.logout),
@@ -40,7 +45,7 @@ urlpatterns = [
     path('getbbs/sellingDetail/<id>', views.getSDetail, name='sDetail'),
     path('getbbs/communicationDetail/<id>', views.getCDetail, name='cDetail'),
     path('my/', views.my),
-    path('test/', views.test),
+#    path('test/', views.test),
     path('backendlogin/', views.backendlogin),
     path('backend/',views.backend),
     path('oldplantinf/',views.plantinf_old),

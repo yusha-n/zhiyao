@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'simpleui',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,7 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    'iotSystem',
+    'users',
+    'pure_pagination',
+    'django_extensions',
 ]
+
+#AUTH_USER_MODEL='users.UserProfile'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -69,6 +76,8 @@ TEMPLATES = [
         },
     },
 ]
+
+
 
 WSGI_APPLICATION = 'zhiyao.wsgi.application'
 
@@ -117,27 +126,47 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
+#
+# TIME_ZONE = 'UTC'
 
-TIME_ZONE = 'UTC'
+# 把英文改为中文
+LANGUAGE_CODE = 'zh-hans'
+
+# 把国际时区改为中国时区
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
-
+USE_TZ = False
+#使用MySQL数据库时，这里设置为True会带来问题:按照日期或者时间筛选记录时只能得到空集
+#USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+#static是路径别名，执行时会映射到static files_dirs路径
 STATIC_URL = '/static/'
-
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static"),
+# ]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = [
     os.path.join(BASE_DIR, "media"),
 ]
+
+#simpleui配置
+SIMPLEUI_HOME_INFO = False
+
+EMAIL_HOST="smtp.qq.com"
+EMAIL_PORT=25
+EMAIL_HOST_USER="1843115916@qq.com"
+EMAIL_HOST_PASSWORD="123456789"
+EMAIL_USE_TLS=True
+EMAIL_FROM="distort<1843115916@qq.com>"

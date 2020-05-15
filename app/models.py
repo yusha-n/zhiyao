@@ -6,8 +6,10 @@
 #   * Remove `managed = True` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 
+
 from datetime import datetime
 from django.db import models
+
 
 class ChangeLog(models.Model):
     tem=models.CharField(max_length=5)#温度
@@ -16,12 +18,14 @@ class ChangeLog(models.Model):
     led=models.CharField(max_length=5)#光照
     addtime=models.DateTimeField(default=datetime.now)#最后一次更新时间
 
+
 class ViewParam(models.Model):
     tem=models.CharField(max_length=5)#温度
     pre=models.CharField(max_length=6)#压强
     hum=models.CharField(max_length=5)#湿度
     led=models.CharField(max_length=5)#光照
     addtime=models.DateTimeField(auto_now=True)#最近一次更新时间
+
 
 class Alterenvironment(models.Model):
     #修改环境信息
@@ -34,23 +38,27 @@ class Alterenvironment(models.Model):
     apressure = models.FloatField(db_column='APressure', blank=True, null=True)  # Field name made lowercase.
     aplantstage = models.CharField(db_column='APlantStage', max_length=20, blank=True, null=True)  # Field name made lowercase.
 
+
     class Meta:
         managed = True
         db_table = 'alterenvironment'
+        verbose_name_plural = '修改环境信息'
 
 
 class Buypost(models.Model):
-    bid = models.CharField(db_column='BID', primary_key=True, max_length=30)  # Field name made lowercase.
-    bplant = models.TextField(db_column='BPlant')  # Field name made lowercase.
-    bdescription = models.TextField(db_column='BDescription')  # Field name made lowercase.
-    bphonenum = models.CharField(db_column='BPhoneNum', max_length=11)  # Field name made lowercase.
-    bprice = models.DecimalField(db_column='BPrice', max_digits=6, decimal_places=2)  # Field name made lowercase.
-    releasebtime = models.DateTimeField(db_column='releaseBTime',auto_now=True)  # Field name made lowercase.
+    bid = models.CharField(verbose_name='编号', db_column='BID', primary_key=True, max_length=30)  # Field name made lowercase.
+    bplant = models.TextField(verbose_name='名称', db_column='BPlant')  # Field name made lowercase.
+    bdescription = models.TextField(verbose_name='描述', db_column='BDescription')  # Field name made lowercase.
+    bphonenum = models.CharField(verbose_name='联系方式', db_column='BPhoneNum', max_length=11)  # Field name made lowercase.
+    bprice = models.DecimalField(verbose_name='价格', db_column='BPrice', max_digits=6, decimal_places=2)  # Field name made lowercase.
+    releasebtime = models.DateTimeField(verbose_name='发布时间', db_column='releaseBTime',auto_now=True)  # Field name made lowercase.
     user_userid = models.ForeignKey('User', models.DO_NOTHING, db_column='User_userId', blank=True, null=True)  # Field name made lowercase.
+
 
     class Meta:
         managed = True
         db_table = 'buypost'
+        verbose_name_plural = '订单'
 
 
 class Cart(models.Model):
@@ -60,9 +68,11 @@ class Cart(models.Model):
     citembasicprice = models.DecimalField(db_column='CItemBasicPrice', max_digits=6, decimal_places=2)  # Field name made lowercase.
     user_userid = models.ForeignKey('User', models.DO_NOTHING, db_column='User_userId', blank=True, null=True)  # Field name made lowercase.
 
+
     class Meta:
         managed = True
         db_table = 'cart'
+        verbose_name_plural = '购物车'
 
 
 class Commentpost(models.Model):
@@ -73,9 +83,11 @@ class Commentpost(models.Model):
     releasectime = models.DateTimeField(db_column='releaseCTime')  # Field name made lowercase.
     user_userid = models.ForeignKey('User', models.DO_NOTHING, db_column='User_userId', blank=True, null=True)  # Field name made lowercase.
 
+
     class Meta:
         managed = True
         db_table = 'commentpost'
+        verbose_name_plural = '评论'
 
 
 class Customenvironment(models.Model):
@@ -89,9 +101,11 @@ class Customenvironment(models.Model):
     cnotes = models.TextField(db_column='CNotes', blank=True, null=True)  # Field name made lowercase.
     incubatorusing_iuno = models.ForeignKey('Incubatorusing', models.DO_NOTHING, db_column='IncubatorUsing_IUNo', blank=True, null=True)  # Field name made lowercase.
 
+
     class Meta:
         managed = True
         db_table = 'customenvironment'
+        verbose_name_plural = '定制环境'
 
 
 class Customstatistics(models.Model):
@@ -103,23 +117,27 @@ class Customstatistics(models.Model):
     notes = models.TextField(db_column='Notes', blank=True, null=True)  # Field name made lowercase.
     plantstatistics_pstaticid = models.ForeignKey('Plantstatistics', models.DO_NOTHING, db_column='PlantStatistics_PStaticid', blank=True, null=True)  # Field name made lowercase.
 
+
     class Meta:
         managed = True
         db_table = 'customstatistics'
+        verbose_name_plural = '定制环境统计参数'
 
 
 class Incubator(models.Model):
     #培养箱实体的信息
-    incuno = models.CharField(db_column='IncuNo', primary_key=True, max_length=20)  # Field name made lowercase.
-    incuname = models.CharField(db_column='IncuName', max_length=45)  # Field name made lowercase.
-    purchasetime = models.DateTimeField(db_column='purchaseTime', blank=True, null=True)  # Field name made lowercase.
-    user_userid = models.ForeignKey('User', models.DO_NOTHING, db_column='User_userId', blank=True, null=True)  # Field name made lowercase.
-    usetime = models.IntegerField(db_column='useTime',null=True)
-    managerstage = models.CharField(db_column='managerStage',max_length=45, null=True)
+    incuno = models.CharField(verbose_name='编号', db_column='IncuNo', primary_key=True, max_length=20)  # Field name made lowercase.
+    incuname = models.CharField(verbose_name='名称', db_column='IncuName', max_length=45)  # Field name made lowercase.
+    purchasetime = models.DateTimeField(verbose_name='购买时间', db_column='purchaseTime', blank=True, null=True)  # Field name made lowercase.
+    user_userid = models.ForeignKey('User', models.DO_NOTHING, verbose_name='用户', db_column='User_userId', blank=True, null=True)  # Field name made lowercase.
+    usetime = models.IntegerField(verbose_name='使用时长', db_column='useTime',null=True)
+    managerstage = models.CharField(verbose_name='状态', db_column='managerStage',max_length=45, null=True)
+
 
     class Meta:
         managed = True
         db_table = 'incubator'
+        verbose_name_plural = '培养箱'
 
 
 class Incubatorusing(models.Model):
@@ -136,9 +154,12 @@ class Incubatorusing(models.Model):
     user_userid = models.ForeignKey('User', models.DO_NOTHING, db_column='User_userId', blank=True, null=True)  # Field name made lowercase.
 
 
+
+
     class Meta:
         managed = True
         db_table = 'incubatorusing'
+        verbose_name_plural = '运行中的培养箱'
 
 
 class Monitorinform(models.Model):
@@ -152,9 +173,11 @@ class Monitorinform(models.Model):
     mplantstage = models.CharField(db_column='MPlantStage', max_length=20)  # Field name made lowercase.
     mscore = models.IntegerField(db_column='MScore', blank=True, null=True)  # Field name made lowercase.
 
+
     class Meta:
         managed = True
         db_table = 'monitorinform'
+        verbose_name_plural = '监视'
 
 
 class Order(models.Model):
@@ -166,9 +189,11 @@ class Order(models.Model):
     ordertotalprice = models.DecimalField(db_column='orderTotalPrice', max_digits=6, decimal_places=2, blank=True, null=True)  # Field name made lowercase.
     user_userid = models.ForeignKey('User', models.DO_NOTHING, db_column='User_userId', blank=True, null=True)  # Field name made lowercase.
 
+
     class Meta:
         managed = True
         db_table = 'order'
+        verbose_name_plural = '订单'
 
 
 class Orderitem(models.Model):
@@ -179,22 +204,50 @@ class Orderitem(models.Model):
     order_orderid = models.ForeignKey(Order, models.DO_NOTHING, db_column='Order_orderId', blank=True, null=True)  # Field name made lowercase.
     product_productid = models.ForeignKey('Product', models.DO_NOTHING, db_column='Product_productID', blank=True, null=True)  # Field name made lowercase.
 
+
     class Meta:
         managed = True
         db_table = 'orderitem'
+        verbose_name_plural = '订单记录'
+
+
+# class Plant(models.Model):
+#     plantID = models.CharField(verbose_name='编号', db_column='PlantNo', primary_key=True,
+#                      max_length=20)  # Field name made lowercase.
+#     plantname = models.CharField(verbose_name='名称', db_column='plantName', max_length=50)  # Field name made lowercase.
+#     #pplantaverpeople = models.IntegerField(verbose_name='培养人', db_column='pplantaverPeople' , null=True)
+#     pplantaverpeople = models.CharField(verbose_name='培养人', db_column='pplantaverPeople', max_length=50, null=True)
+#     #pplantsumpeople = models.IntegerField(db_column='pplantsumPeople' , null=True)
+#     #pplantavertime = models.IntegerField(verbose_name='种植时间', db_column='pplantaverTime' , null=True)
+#     pplantavertime = models.DateTimeField(verbose_name='时间', db_column='pplantaverTime', blank=True, null=True)  # Field name made lowercase.
+#     #pplantsumtime = models.IntegerField(db_column='pplantsumTime' , null=True)
+#     pavermark = models.IntegerField(verbose_name='评分', db_column='paverMark' , null=True)
+#
+#     class Meta:
+#         managed = True
+#         db_table = 'plant'
+#         #verbose_name = '植物'
+#         verbose_name_plural = '植物'
 
 
 class Plant(models.Model):
-    plantname = models.CharField(db_column='plantName', primary_key=True, max_length=50)  # Field name made lowercase.
-    pplantaverpeople = models.IntegerField(db_column='pplantaverPeople' , null=True)
+    #plantID = models.CharField(verbose_name='编号', db_column='PlantNo', primary_key=True,
+     #                max_length=20)  # Field name made lowercase.
+    plantname = models.CharField(verbose_name='名称', db_column='plantName', primary_key=True, max_length=50)  # Field name made lowercase.
+    #pplantaverpeople = models.IntegerField(verbose_name='培养人', db_column='pplantaverPeople' , null=True)
+    pplantaverpeople = models.CharField(verbose_name='培养人', db_column='pplantaverPeople', max_length=50, null=True)
     pplantsumpeople = models.IntegerField(db_column='pplantsumPeople' , null=True)
-    pplantavertime = models.IntegerField(db_column='pplantaverTime' , null=True)
+    #pplantavertime = models.IntegerField(verbose_name='种植时间', db_column='pplantaverTime' , null=True)
+    pplantavertime = models.DateTimeField(verbose_name='时间', db_column='pplantaverTime', blank=True, null=True)  # Field name made lowercase.
     pplantsumtime = models.IntegerField(db_column='pplantsumTime' , null=True)
-    pavermark = models.IntegerField(db_column='paverMark' , null=True)
+    pavermark = models.IntegerField(verbose_name='评分', db_column='paverMark' , null=True)
+
 
     class Meta:
         managed = True
         db_table = 'plant'
+        #verbose_name = '植物'
+        verbose_name_plural = '植物'
 
 
 class Plantstatistics(models.Model):
@@ -206,9 +259,11 @@ class Plantstatistics(models.Model):
     spressure = models.FloatField(db_column='SPressure')  # Field name made lowercase.
     slightlntensity = models.FloatField(db_column='Slightlntensity')  # Field name made lowercase.
 
+
     class Meta:
         managed = True
         db_table = 'plantstatistics'
+        verbose_name_plural = '植物统计'
 
 
 class Product(models.Model):
@@ -222,9 +277,11 @@ class Product(models.Model):
     productrepertory = models.IntegerField(db_column='productRepertory')  # Field name made lowercase.
     productunit = models.CharField(db_column='productUnit', max_length=45)  # Field name made lowercase.
 
+
     class Meta:
         managed = True
         db_table = 'product'
+        verbose_name_plural = '产品'
 
 
 class Productdetail(models.Model):
@@ -235,17 +292,21 @@ class Productdetail(models.Model):
     pdnotes = models.CharField(db_column='PDNotes', max_length=45, blank=True, null=True)  # Field name made lowercase.
     product_productid = models.ForeignKey(Product, models.DO_NOTHING, db_column='Product_productID', blank=True, null=True)  # Field name made lowercase.
 
+
     class Meta:
         managed = True
         db_table = 'productdetail'
+        verbose_name_plural = '产品详情'
 
 
 class Repository(models.Model):
     productclass = models.CharField(db_column='productClass', primary_key=True, max_length=50)  # Field name made lowercase.
 
+
     class Meta:
         managed = True
         db_table = 'repository'
+        verbose_name_plural = '仓库'
 
 
 class Sellpost(models.Model):
@@ -259,30 +320,38 @@ class Sellpost(models.Model):
     releasestime = models.DateTimeField(db_column='releaseSTime')  # Field name made lowercase.
     user_userid = models.ForeignKey('User', models.DO_NOTHING, db_column='User_userId', blank=True, null=True)  # Field name made lowercase.
 
+
     class Meta:
         managed = True
         db_table = 'sellpost'
+        verbose_name_plural = '销售单'
 
 
 class User(models.Model):
     userid = models.CharField(db_column='userId', primary_key=True, max_length=45)  # Field name made lowercase.
-    userphonenum = models.CharField(db_column='userPhoneNum', unique=True, max_length=11)  # Field name made lowercase.
-    usermail = models.CharField(db_column='userMail', unique=True, max_length=50)  # Field name made lowercase.
-    username = models.CharField(db_column='userName', unique=True, max_length=50)  # Field name made lowercase.
+    userphonenum = models.CharField(verbose_name='电话号码',db_column='userPhoneNum', unique=True, max_length=11)  # Field name made lowercase.
+    usermail = models.CharField(verbose_name='邮箱',db_column='userMail', unique=True, max_length=50)  # Field name made lowercase.
+    username = models.CharField(verbose_name='用户名', db_column='userName', unique=True, max_length=50)  # Field name made lowercase.
     password = models.CharField(max_length=50)
     userstate = models.IntegerField(db_column='userState',default=0)  # Field name made lowercase.
     registrationdate = models.DateTimeField(db_column='registrationDate',auto_now=True)  # Field name made lowercase.
     userimg = models.CharField(db_column='userImg', max_length=50, default="md.ipg")
-    usersex = models.IntegerField(db_column='userSex',default=0)
+    usersex = models.IntegerField(verbose_name='性别', db_column='userSex',default=0)
     userintroduction =models.CharField(db_column='userIntroduction', max_length=255 ,default="22")
     userlastlogintime = models.DateTimeField(db_column='userLastlogintime',null=True)
+
 
     class Meta:
         managed = True
         db_table = 'user'
+        verbose_name_plural = '用户'
+
+
 
 
 ######新加数据库######
+
+
 
 
 class MangerUser(models.Model):
@@ -291,9 +360,11 @@ class MangerUser(models.Model):
     muserphonenum = models.CharField(db_column='MuserPhoneNum', unique=True, max_length=11)
     mpassword = models.CharField(db_column='Mpassword', max_length=50)
 
+
     class Meta:
         managed = True
         db_table = 'MangerUser'
+        verbose_name_plural = '管理用户'
 
 
 class PlantShow(models.Model):
@@ -306,9 +377,11 @@ class PlantShow(models.Model):
     spheat = models.CharField(db_column='spHeat',max_length=45,default="32")
     incubator_incuno = models.ForeignKey(Incubator, models.DO_NOTHING, db_column='Incubator_IncuNo', blank=True,null=True)
 
+
     class Meta:
         managed = True
         db_table = 'plantshow'
+        verbose_name_plural = '可视植物'
 
 
 class UsershowLink(models.Model):
@@ -316,9 +389,11 @@ class UsershowLink(models.Model):
     user_userid = models.ForeignKey('User', models.DO_NOTHING, db_column='User_userId', blank=True, null=True)
     plantshow_spid = models.ForeignKey('PlantShow', models.DO_NOTHING, db_column='plantshow_spID', blank=True,null=True)
 
+
     class Meta:
         managed = True
         db_table = 'usershowlink'
+        verbose_name_plural = '可视用户'
 
 
 class Incubatorhardinf(models.Model):
@@ -331,9 +406,11 @@ class Incubatorhardinf(models.Model):
     inchardinfdate = models.DateField(db_column=' inchardinfDate' , auto_now=True)
     incubator_incuno = models.ForeignKey(Incubator, models.DO_NOTHING, db_column='Incubator_IncuNo', blank=True,null=True)
 
+
     class Meta:
         managed = True
         db_table = 'incubatorhardinf'
+        verbose_name_plural = '培养箱硬件'
 
 
 class Incplantdetail(models.Model):
@@ -345,9 +422,11 @@ class Incplantdetail(models.Model):
     incubator_incuno = models.ForeignKey(Incubator, models.DO_NOTHING, db_column='Incubator_IncuNo', blank=True, null=True)
     Plant_plantname = models.ForeignKey(Plant, models.DO_NOTHING, db_column='plant_plantname', blank=True, null=True)
 
+
     class Meta:
         managed = True
         db_table = 'Incplantdetail'
+        verbose_name_plural = '植物详情'
 
 
 class Selldetail(models.Model):
@@ -357,18 +436,22 @@ class Selldetail(models.Model):
     mostsellInc = models.CharField(db_column='mostsellInc',max_length=45,null=True)
     mostsellarea = models.CharField(db_column='mostsellarea',max_length=45,null=True)
 
+
     class Meta:
         managed = True
         db_table = 'selldetail'
+        verbose_name_plural = '销售单'
 
 
 class SellManger(models.Model):
     areaname = models.CharField(db_column='areaName',max_length=45, null=True)
     managername = models.CharField(db_column='managerName', max_length=45, null=True)
 
+
     class Meta:
         managed = True
         db_table = 'sellmanager'
+        verbose_name_plural = '？'
 
 
 class Fixinfo(models.Model):
@@ -379,6 +462,8 @@ class Fixinfo(models.Model):
     fixmanager = models.CharField(db_column='fixManager',max_length=45,null=True)
     fixputdate = models.DateField(db_column='fixputDate', auto_now=True)
 
+
     class Meta:
         managed =True
         db_table = 'fixinfo'
+        verbose_name_plural = '修改环境'

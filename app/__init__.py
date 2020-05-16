@@ -1,9 +1,9 @@
 ####以下为使用模型进行训练的代码!
 ####load model的代码只能加载一次，放在init中，否则会报错
-import tensorflow
+#import tensorflow
 #from keras.models import load_model
 import os
-import numpy as np
+#import numpy as np
 #from keras.preprocessing import image
 #from keras.applications.imagenet_utils import preprocess_input
 
@@ -37,4 +37,7 @@ if os.path.exists('app//inception_1.h5'):
     print('load successful')
    # print(model.predict(read_image('app//necessary.PNG')))
 
+#修改app的名称
+
+default_app_config = 'app.apps.AppsConfig'
 

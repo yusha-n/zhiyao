@@ -7,8 +7,8 @@ from app.models import Incubatorusing
 from app.models import Monitorinform
 
 #作图
-import matplotlib.pyplot as plt
-from matplotlib.ticker import MultipleLocator
+#import matplotlib.pyplot as plt
+#from matplotlib.ticker import MultipleLocator
 import time
 import json
 # Create your views here.
@@ -135,6 +135,7 @@ def getIncubator(userid):
     #获取用户所有正在使用的培养箱
 
 def incubator(request):
+
     userphone = request.session['userphone']
     # get是获取单个对象，filte是设置筛选条件
     incubators = models.Incubator.objects.filter(user_userid=userphone)
@@ -147,6 +148,9 @@ def incubator(request):
         incu = zip(incuName, incuID)
     print('jump to incubator success')
     return render(request, 'incubator.html', {"incu": incu})
+# def incubator(request):
+#     url_ = "/iotSystem/"
+#     return redirect(url_)
 
 def getAdvice(category):
     #categories=['bad','good','green','normal','red']
@@ -585,20 +589,20 @@ def guide(request):
 
 #作图：
 
-def graph(x,y,file):
-    # y = [0.236, 0.256, 0.288, 0.483, 0.621, 0.737, 0.796, 0.845, 0.833, 0.802]
-    # x = [20, 30, 40, 80, 150, 250, 350, 400, 450, 500]
-    fig = plt.figure()
-    ax1 = fig.add_subplot(1, 1, 1, facecolor='white')
-    ax1.set_xlabel('时间')  # 设置x轴名称
-    ax1.set_ylabel('值')  # 设置y轴名称
-    #设置y轴坐标范围
-    plt.title("Figure1_GrayLevel&F1core")
-
-    ax1.yaxis.grid(True, which='minor')
-    ax1.plot(x, y, marker='v', color='k', label='fun1', linestyle='dashed')
-    plt.savefig(file)
-
-#用作测试
-def test(request):
-    return render(request,'test.html')
+# def graph(x,y,file):
+#     # y = [0.236, 0.256, 0.288, 0.483, 0.621, 0.737, 0.796, 0.845, 0.833, 0.802]
+#     # x = [20, 30, 40, 80, 150, 250, 350, 400, 450, 500]
+#     fig = plt.figure()
+#     ax1 = fig.add_subplot(1, 1, 1, facecolor='white')
+#     ax1.set_xlabel('时间')  # 设置x轴名称
+#     ax1.set_ylabel('值')  # 设置y轴名称
+#     #设置y轴坐标范围
+#     plt.title("Figure1_GrayLevel&F1core")
+#
+#     ax1.yaxis.grid(True, which='minor')
+#     ax1.plot(x, y, marker='v', color='k', label='fun1', linestyle='dashed')
+#     plt.savefig(file)
+#
+# #用作测试
+# def test(request):
+#     return render(request,'test.html')

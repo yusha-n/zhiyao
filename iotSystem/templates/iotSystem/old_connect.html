@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>建立连接</title>
+    <style type="text/css">
+        .icss={
+            margin: 0 auto;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+.STYLE1 {font-family: Arial, Helvetica, sans-serif}
+
+</style>
+
+</head>
+<body>
+
+<div style="height:500px; width:400px">
+    <div class="icss STYLE1" >
+    <form action="{% url 'iotSystem:connect' %}" method="post">
+        {% csrf_token %}
+  培养箱编号: <input type="text" name="id_incubator"><br>
+  密钥: <input type="text" name="key" maxlength="20"><br>
+  <input type="reset" value="重置">
+  <input type="submit" value="提交">
+</form>
+        <ul>
+            <li>
+                <strong>
+                    {% if msg%}
+                    {{ msg }}
+                    {% endif %}
+                </strong>
+            </li>
+        </ul>
+</div>
+</div>
+
+</body>
+</html>

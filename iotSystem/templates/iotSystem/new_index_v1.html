@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta charset="utf-8">
+
+    <meta name="renderer" content="webkit">
+    <meta name="keywords" content="智药">
+    <meta name="description" content="智药">
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link href="{% static 'iotSystem/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'iotSystem/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'iotSystem/css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'iotSystem/css/style.css' %}" rel="stylesheet">
+
+    <title>R:</title>
+
+
+    <link href="{% static 'iotSystem/css/bootstrapSwitch.css' %}" rel="stylesheet">
+
+    <!-- 引入 echarts.js -->
+    <script src="{% static 'iotSystem/js/jquery.min.js' %}"></script>
+    <script src="{% static 'iotSystem/js/bootstrapSwitch.js' %}"></script>
+    <script src="https://cdn.bootcss.com/echarts/4.1.0.rc2/echarts-en.min.js"></script>
+    <script src="{% static 'iotSystem/js/loading.js ' %}"></script>
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden; ">
+
+    <div id="wrapper">
+        <!--左侧导航开始-->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="nav-close"><i class="fa fa-times-circle"></i>
+            </div>
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                          <!--  <span><img alt="image" class="img-circle" src="img/profile_small.jpg" /></span> !-->
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                               <span class="block m-t-xs"><strong class="font-bold">{{ request.user.username }}</strong></span>
+                                <span class="text-muted text-xs block">管理员<b class="caret"></b></span>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a  href="form_avatar.html">修改头像</a>
+                                </li>
+                                <li><a  href="111profile.html">个人资料</a>
+                                </li>
+                                <li><a  href="contacts.html">联系我们</a>
+                                </li>
+                                <li><a  href="mailbox.html">信箱</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li><a href="{%  url 'users:logout' %}">安全退出</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">IOT
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-home"></i>
+                            <span class="nav-label">项目介绍</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                             <li>
+                                <a  href="{%  url 'iotSystem:introduce' %}" data-index="0">时间线</a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-tint"></i>
+                            <span class="nav-label">数据信息</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a  href="{%  url 'iotSystem:data_dis' %}" data-index="0">实时数据</a>
+                            </li>
+                            <li>
+                                <a  href="{%  url 'iotSystem:data_history' %}">历史数据</a>
+                            </li>
+                            <li>
+                                <a  href="{%  url 'iotSystem:historyDataFilter' %}">历史数据分析</a>
+                            </li>
+                        </ul>
+
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-bell"></i>
+                            <span class="nav-label">报警状态</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                             <li>
+                                <a  href="{%  url 'iotSystem:warningHistory' %}">报警历史</a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-map-marker"></i>
+                            <span class="nav-label">传感器位置</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                             <li>
+                                <a href="{%  url 'iotSystem:position' %}">当前位置</a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-wrench"></i>
+                            <span class="nav-label">设备控制</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                             <li>
+                                 <a href="{% url 'iotSystem:control' %}"> 控制 </a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+                    <!--
+                    <li>
+                        <a  href="layouts.html"><i class="fa fa-columns"></i> <span class="nav-label">设备监控</span></a>
+                    </li>
+         
+                    !-->
+
+                </ul>
+            </div>
+        </nav>
+        <!--左侧导航结束-->
+        <!--右侧部分开始-->
+
+
+
+
+
+        <div id="page-wrapper" class="gray-bg dashbard-1" style="width:100%; height:100%" >
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                        <form role="search" class="navbar-form-custom" method="post" action="search_results.html">
+                            <div class="form-group">
+                                <input type="text" placeholder="请输入您需要查找的内容 …" class="form-control" name="top-search" id="top-search">
+                            </div>
+                        </form>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right" >
+                        <li style="margin-top:20px;">智药
+						</li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="row content-tabs">
+                <button class="roll-nav roll-left J_tabLeft"><i class="fa fa-backward"></i>
+                </button>
+                <nav class="page-tabs J_menuTabs">
+                    <div class="page-tabs-content">
+                        <a href="{% url 'iotSystem:data_dis' %}"  >首页</a>
+
+                    </div>
+                </nav>
+                <button class="roll-nav roll-right J_tabRight"><i class="fa fa-forward"></i>
+                </button>
+                <div class="btn-group roll-nav roll-right">
+                    <button class="dropdown J_tabClose" data-toggle="dropdown">关闭操作<span class="caret"></span>
+
+                    </button>
+                    <ul role="menu" class="dropdown-menu dropdown-menu-right">
+                        <li class="J_tabShowActive"><a>定位当前选项卡</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="J_tabCloseAll"><a>关闭全部选项卡</a>
+                        </li>
+                        <li class="J_tabCloseOther"><a>关闭其他选项卡</a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="{%  url 'users:logout' %}" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
+
+            </div>
+            <ul class="list-group">
+			    <li class="list-group-item">欢迎进入物联网实时监控系统</li>
+
+		        </ul>
+            <div class="row J_mainContent" id="content-main1" style="width:100%;height:100%; ">
+                <div class="container" style="width:100%; height:100%; ">
+                    <div class="row" style="height:100%; ">
+                    <div style="height:100%;">
+
+                    <div class="col-md-6 "  >
+
+                    <img style="width:700px;height: 400px" src="{% static '/images/plant01.jpg' %}" id="incubator_img" onload="refreshImg()">
+                    <script>
+            function refreshImg(){
+                setInterval(a,5000);
+            }
+            function a(){
+                document.getElementById('incubator_img').src="{% static '/images/plant01.jpg' %}"+Math.random();
+            }
+
+
+                    </script>
+                    </div>
+
+                       <link rel="stylesheet" href="{% static 'css/data_dis.css' %}">
+                    <div class="incubator_data1" >
+                    <div class="plantname" >
+                    <h2 >药材信息</h2>
+                    <div style="overflow:auto; height: 180px">
+                    <a href="#" class="list-group-item">药材种类：甘草</a>
+                    <a href="/test" class="list-group-item">药材生长阶段：开花</a>
+                    <a href="#" class="list-group-item">药材状态：{{ state }} <span class="glyphicon glyphicon-info-sign" style="color:red;"></span></a>
+                    <a href="/howtoplant" class="list-group-item">药材习性：
+                        <div class="planteven">
+                                <p>
+                                    多肉植物喜通风，需要充足的光照，为避免黑腐，宜控水不宜过度浇水。
+                                  </p>
+                        </div>
+                    </a>
+                    </div>
+                    </div>
+
+
+
+                    <div class="plantname" style="margin-top: 0px;" >
+                        <h2>箱体环境：</h2>
+                        <div style="margin-top: 0px;">
+                         <table class="table table-bordered" style="height:100%; background: white;">
+                              <thead>
+                                <tr>
+                                  <th>箱内环境</th>
+                                  <th>建议环境</th>
+                                  <th>建议</th>
+                                </tr>
+                              </thead>
+
+                        </table>
+                        </div>
+                        <div style="margin-top: -20px;overflow-y:scroll;">
+                            <table class="table table-bordered" style="background: white;">
+                             <tbody  >
+                                <tr>
+                                  <td>光照：321321 lux</td>
+                                  <td>光照：{{ adviceLight }} lux;</td>
+                                  <td>560001</td>
+                                </tr>
+                                <tr>
+                                  <td>温度：12 ℃;</td>
+                                  <td>温度：{{ adviceTemperature }} ℃;</td>
+                                  <td>400003</td>
+                                </tr>
+                                <tr>
+                                  <td>湿度：40 %;</td>
+                                  <td>湿度：{{ adviceHumidity }} %;</td>
+                                  <td>411027</td>
+                                </tr>
+                                <tr>
+                                    <td>压强：3213Pa;</td>
+                                    <td>压强：{{ advicepressure }}Pa;</td>
+                                    <td>411027</td>
+                                 </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div id="page-wrapper1" class="gray-bg dashbard-1" style="width:100%; ">
+            <div class="row J_mainContent" id="content-main" style="width:100%;height:100%; ">
+                <div class="container" style="width:100%; height:100%; ">
+
+		            <div class="row" style="height:100%; ">
+			<div class="col-md-6" id="main" style="height:400px; ">
+                <h4>监控</h4>
+            </div>
+			<div class="col-md-6" style="border-left:red 2px solid;">
+				<ul class="list-group">
+					<li class="list-group-item">气体实时数据</li>
+				</ul>
+
+				<form role="form">
+				  <div class="form-group">
+					<label for="name">土壤温度</label>
+					<input type="text" class="form-control"name="temp_land" disabled="disabled">
+                      <label for="name">空气温度</label>
+					<input type="text" class="form-control"name="temp_area" disabled="disabled">
+					<label for="name">土壤湿度</label>
+					<input type="text" class="form-control" name="humi_land" disabled="disabled">
+                      <label for="name">空气湿度</label>
+					<input type="text" class="form-control" name="humi_area" disabled="disabled">
+                      <label for="name">压强</label>
+					<input type="text" class="form-control" name="pres" disabled="disabled">
+                      <label for="name">光照</label>
+					<input type="text" class="form-control" name="illu" disabled="disabled">
+				  </div>
+				 </form>
+
+                <!--  实时控制家用电气!-->
+
+                    </div>
+
+                </div>
+                </div>
+
+
+		</div>
+            </div>
+
+        </div>
+
+
+
+        <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+	window.onload = function(){
+	$(function()
+	{
+
+			var myChart = echarts.init(document.getElementById('main'));
+
+            var humi_area_Data = [], humi_land_Data = [],temp_land_Data=[], temp_area_Data=[], illu_Data=[], pres_Data=[];
+            var data={{ data_list|safe }};
+            for(var i=0;i<data.length;i++)
+            {
+                humi_land_Data.push({
+                    name:data[i].time,
+                    value:[data[i].time,data[i].humi_land]
+                });
+                humi_area_Data.push({
+                    name:data[i].time,
+                    value:[data[i].time,data[i].humi_area]
+                });
+                  temp_land_Data.push({
+                    name:data[i].time,
+                    value:[data[i].time,data[i].temp_land]
+                });
+                temp_area_Data.push({
+                    name:data[i].time,
+                    value:[data[i].time,data[i].temp_area]
+                });
+                illu_Data.push({
+                    name:data[i].time,
+                    value:[data[i].time,data[i].illu]
+                });
+                  pres_Data.push({
+                    name:data[i].time,
+                    value:[data[i].time,data[i].pres]
+                });
+            }
+option = {
+    title: {
+        text: 'R：'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['土壤温度','空气温度','土壤湿度','空气湿度','光照','压强']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+       type:'time'
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [
+        {
+            name:'土壤温度',
+            type:'line',
+
+            data:temp_land_Data
+        },
+        {
+            name:'空气温度',
+            type:'line',
+
+            data:temp_area_Data
+        },
+        {
+            name:'土壤湿度',
+            type:'line',
+
+            data:humi_land_Data
+        },
+        {
+            name:'空气湿度',
+            type:'line',
+
+            data:humi_area_Data
+        },
+        {
+            name:'压强',
+            type:'line',
+
+            data:pres_Data
+        },
+        {
+            name:'光照',
+            type:'line',
+
+            data:illu_Data
+        }
+    ]
+};
+//第一次初始化用
+myChart.setOption(option);
+var timeFlag="";
+                //ajax
+        setInterval(function () {
+                        //ajax请求数据
+                    $.ajax({
+                            cache:false,
+                            type:"POST",
+                            url:"{% url 'iotSystem:ajax_data' %}",
+                            async:true,
+                            beforeSend:function(xhr, settings){
+                                    xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+                                },
+                            success:function(data){
+                                if(timeFlag==data.time) return;
+                                timeFlag=data.time;
+                                $("input[name='temp_land']").val(data.temp_land);
+                                $("input[name='temp_area']").val(data.temp_area);
+                                $("input[name='humi_land']").val(data.humi_land+"%");
+                                $("input[name='humi_area']").val(data.humi_area+"%");
+                                $("input[name='pres']").val(data.pres);
+                                $("input[name='illu']").val(data.illu);
+                                     humi_land_Data.shift();
+                                    humi_land_Data.push({
+                                    name:data.time,
+                                    value:[data.time,data.humi_land]
+                                });
+                                humi_area_Data.shift();
+                                    humi_area_Data.push({
+                                    name:data.time,
+                                    value:[data.time,data.humi_area]
+                                });
+                                    temp_land_Data.shift();
+                                    temp_land_Data.push({
+                                    name:data.time,
+                                    value:[data.time,data.temp_land]
+                                });
+                                temp_area_Data.shift();
+                                    temp_area_Data.push({
+                                    name:data.time,
+                                    value:[data.time,data.temp_area]
+                                });
+                                pres_Data.shift();
+                                    pres_Data.push({
+                                    name:data.time,
+                                    value:[data.time,data.pres]
+                                });
+                                illu_Data.shift();
+                                    illu_Data.push({
+                                    name:data.time,
+                                    value:[data.time,data.illu]
+                                });
+                                             myChart.setOption({
+                                                        series: [
+                                                                    {
+            name:'土壤温度',
+            type:'line',
+
+            data:temp_land_Data
+        },
+        {
+            name:'空气温度',
+            type:'line',
+
+            data:temp_area_Data
+        },
+        {
+            name:'土壤湿度',
+            type:'line',
+
+            data:humi_land_Data
+        },
+        {
+            name:'空气湿度',
+            type:'line',
+
+            data:humi_area_Data
+        },
+        {
+            name:'压强',
+            type:'line',
+
+            data:pres_Data
+        },
+        {
+            name:'光照',
+            type:'line',
+
+            data:illu_Data
+        }
+                                                                ]
+                                                });
+
+                            }
+                        });
+
+}, 2000);
+        //first request
+                    $.ajax({
+                            cache:false,
+                            type:"POST",
+                            url:"{% url 'iotSystem:ajax_data' %}",
+                            async:true,
+                            beforeSend:function(xhr, settings){
+                                    xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+                                },
+                            success:function(data){
+                                if(timeFlag==data.time) return;
+                                timeFlag=data.time;
+                                $("input[name='temp_land']").val(data.temp_land);
+                                $("input[name='temp_area']").val(data.temp_area);
+                                $("input[name='humi_land']").val(data.humi_land+"%");
+                                $("input[name='humi_area']").val(data.humi_area+"%");
+                                $("input[name='pres']").val(data.pres);
+                                $("input[name='illu']").val(data.illu);
+                                humi_land_Data.shift();
+                                    humi_land_Data.push({
+                                    name:data.time,
+                                    value:[data.time,data.humi_land]
+                                });
+                                humi_area_Data.shift();
+                                    humi_area_Data.push({
+                                    name:data.time,
+                                    value:[data.time,data.humi_area]
+                                });
+                                    temp_land_Data.shift();
+                                    temp_land_Data.push({
+                                    name:data.time,
+                                    value:[data.time,data.temp_land]
+                                });
+                                temp_area_Data.shift();
+                                    temp_area_Data.push({
+                                    name:data.time,
+                                    value:[data.time,data.temp_area]
+                                });
+                                pres_Data.shift();
+                                    pres_Data.push({
+                                    name:data.time,
+                                    value:[data.time,data.pres]
+                                });
+                                illu_Data.shift();
+                                    illu_Data.push({
+                                    name:data.time,
+                                    value:[data.time,data.illu]
+                                });
+
+
+
+                                             myChart.setOption({
+                                                        series: [
+                                                                 {
+            name:'土壤温度',
+            type:'line',
+
+            data:temp_land_Data
+        },
+        {
+            name:'空气温度',
+            type:'line',
+
+            data:temp_area_Data
+        },
+        {
+            name:'土壤湿度',
+            type:'line',
+
+            data:humi_land_Data
+        },
+        {
+            name:'空气湿度',
+            type:'line',
+
+            data:humi_area_Data
+        },
+        {
+            name:'压强',
+            type:'line',
+
+            data:pres_Data
+        },
+        {
+            name:'光照',
+            type:'line',
+
+            data:illu_Data
+        }
+                                                                ]
+                                                });
+
+                            }
+                        });
+    });
+}
+ </script>
+    </div>
+            <div class="footer">
+                <div class="pull-right">&copy; 2018-2020 <a href="" target="_blank">智药</a>
+                </div>
+            </div>
+
+        <!--右侧部分结束-->
+
+
+
+    <!-- 全局js -->
+<script src="{% static 'iotSystem/js/jquery.min.js' %}"></script>
+<script src="{% static 'iotSystem/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'iotSystem/js/plugins/metisMenu/jquery.metisMenu.js' %}"></script>
+<script src="{% static 'iotSystem/js/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+<script src="{% static 'iotSystem/js/plugins/layer/layer.min.js' %}"></script>
+    <!-- 自定义js -->
+
+<script src="{% static 'iotSystem/js/hplus.js' %}"></script>
+<script type="text/javascript" src="{% static 'iotSystem/js/contabs.js' %}" ></script>
+    <!-- 第三方插件 -->
+
+<script src="{% static 'iotSystem/js/plugins/pace/pace.min.js' %}"></script>
+</body>
+
+</html>
